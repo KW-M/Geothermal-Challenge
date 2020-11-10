@@ -1,0 +1,20 @@
+#planet_surface_container, #planet {
+  position: fixed;
+  top: 30vh;
+  left: 50%;
+
+  height: 8000px;
+
+  transform: translateX(-50%) rotate(0deg);
+}
+
+.surface-image {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+
+  width: 50px;
+
+  transform: translateX(-50%) rotate(0deg);
+  transform-origin: 0 4000px;
+}

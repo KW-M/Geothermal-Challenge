@@ -1,0 +1,19 @@
+{
+  "name": "kyle-portfolio",
+  "version": "2.0.0",
+  "description": "My Web Portfolio",
+  "repository": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "parcel index.html"
+  },
+  "author": "Kyle W-M",
+  "license": "MIT",
+  "browserslist": "> 0.25%, not dead",
+  "devDependencies": {
+    "sass": "^1.26.11"
+  },
+  "dependencies": {
+    "gsap": "^3.5.1"
+  }
+}
