@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<script src="./index.js"></script>
+
 <head>
     <meta charset="utf-8">
     <title>Geothermal Challenge</title>
@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="./style.scss" />
+    <script src="./index.js"></script>
 </head>
 
 <body>
@@ -17,9 +18,9 @@
     <div class="scroll-extender"></div>
     <img id="planet" src="Planet Cuttaway.svg"  alt="" srcset="">
     <div id="planet_surface_container">
-        <img src="Mountains.svg" class="surface-image" style="top: -190px; width:200px; transform: translateX(-50%) rotate(-5deg);" >
-        <img src="Mountains.svg" class="surface-image" style="top: -30px; width:500px; transform: translateX(-50%) rotate(20deg);" onclick="openModal()">
-    </div>    
+        <img src="Mountains.svg" onclick="openModal('Mountains1')" class="surface-image" style="top: -190px; width:200px; transform: translateX(-50%) rotate(-5deg);" >
+        <img src="Mountains.svg" onclick="openModal('Mountains2')" class="surface-image" style="top: -30px; width:500px; transform: translateX(-50%) rotate(20deg);" >
+    </div>
 </body>
 
 </html>
