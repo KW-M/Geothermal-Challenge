@@ -7,18 +7,120 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#ffffff">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
     <link rel="stylesheet" href="./style.scss" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+        <!-- TODO: ADD map credits -->
+        <!--
+            !!!!!!
+         -->
 </head>
 
 <body>
-    <div class="scroll-extender"></div>
-
-    <img id="planet" src="Planet Cuttaway.svg"  alt="" srcset="">
-    <div id="planet_surface_container">
-        <img src="Mountains.svg" class="surface-image" style="top: -190px; width:200px; transform: translateX(-50%) rotate(-5deg);" onclick="alert('yay')">
-        <img src="Mountains.svg" class="surface-image" style="top: -30px; width:500px; transform: translateX(-50%) rotate(20deg);" onclick="alert('yay')">
+    <div class="star-background"></div>
+    <div class="scroll-extender">
+        <section class="intro-text">
+            <h1 id="intro_title">
+                <span class="green-text">Green & Unseen</span>
+                <br /><span class="subtitle-text">The Future of Geothermal Power</span>
+            </h1>
+            <h3 id="intro_text_1">
+                <!-- It’s estimated that <br/> -->
+                Enough accessible heat lies 7 km under US soils to power
+                <span class="blue-text">5x the entire nation’s electricity use</span> for
+                <span class="yellow-text">millions of years.</span>
+                <br /><span class="grey-text small-text">(US Department of Energy Geovision Report Estimate)</span>
+            </h3>
+            <h3 id="intro_text_2">
+                Until recently, taping into this vast energy source was confined to isolated hotspots...
+            </h3>
+            <h3 id="intro_text_3">
+                But change is on the horizon...
+            </h3>
+            <h3 id="intro_text_4">
+                New technologies are allowing us to tap geothermal heat almost <span class="blue-text">anywhere in the world</span> and turn it into
+                <span class="yellow-text">power for our cities</span>, <span class="orange-text">heat for our homes</span>, and <span class="green-text">even valuable minerals</span>.
+            </h3>
+        </section>
     </div>
 
+
+    <img class="planet" id="miniplanet" src="Artboard1.svg" >
+    <div id="planet_surface_container">
+        <img src="Mountains.svg" class="surface-image"
+            style="width:200px; transform: translateX(-50%) rotate(-5deg) translateY(-30px);" onclick="alert('yay')">
+        <img src="Mountains.svg" class="surface-image"
+            style="width:500px; transform: translateX(-50%) rotate(20deg) translateY(-115px);" onclick="alert('yay')">
+        <!-- <img src="Quick Sketch.png" class="surface-image"
+            style="width:4000px; transform: translateX(-50%) rotate(0deg) translateY(-1175px);opacity: 0.9;"
+            onclick="alert('yay')"> -->
+
+    </div>
+
+
+    <svg class="planet" id="earth_planet" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" stroke-linejoin="round"
+        stroke-miterlimit="2" clip-rule="evenodd" viewBox="0 -3 1000 1000">
+        <defs />
+
+
+        <image xlink:href="Earth_Potential.png" id="earth_potential" preserveAspectRatio="xMidYMin slice" width="1000"
+            y="-40" height="339" />
+
+        <use href="#earth_scale_cutaway" id="earth_scale_cutaway_r" />
+
+        <image xlink:href="/Earth_PowerStations.png" id="earth_powerstations_l" clip-path="url(#half_circle_l)"
+            preserveAspectRatio="xMidYMin slice" width="1000" y="-40" height="339"></image>
+        <image xlink:href="/Earth_PowerStations.png" id="earth_powerstations_r" clip-path="url(#half_circle_r)"
+            preserveAspectRatio="xMidYMin slice" width="1000" y="-40" height="339"></image>
+
+        <use href="#earth_scale_cutaway" id="earth_scale_cutaway_l" clip-path="url(#half_circle_l)" />
+
+        <defs>
+            <g id="earth_scale_cutaway">
+                <circle cx="500" cy="500" r="500" fill="url(#_Radial2)" />
+                <path fill="#683b00"
+                    d="M500 0c275.96 0 500 224.04 500 500 0 275.96-224.04 500-500 500C224.04 1000 0 775.96 0 500 0 224.04 224.04 0 500 0zm0 1c275.4 0 499 223.6 499 499S775.4 999 500 999 1 775.4 1 500 224.6 1 500 1z" />
+                <circle cx="500" cy="499.99" r="431.41" fill="url(#_Radial3)" />
+                <circle cx="500" cy="499.99" r="272.69" fill="url(#_Radial4)" />
+                <circle cx="500" cy="499.99" r="100.2" fill="#effcf7" />
+            </g>
+            <clipPath id="half_circle_r">
+                <path id="half_circle_r_clip_path" d="M0 1000c275.96 0 500-224.04 500-500C500 224.04 275.96 0 0 0v1000z" />
+            </clipPath>
+
+            <clipPath id="half_circle_l">
+                <path d="M500 1000C224.04 1000 0 775.94 0 500 0 224.03 224.04 0 500 0v1000z" />
+            </clipPath>
+            <radialGradient id="_Radial2" cx="0" cy="0" r="1" gradientTransform="matrix(500 0 0 500 500 500)"
+                gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#f55900" />
+                <stop offset=".86" stop-color="#dc2b00" />
+                <stop offset=".93" stop-color="#bf1d00" />
+                <stop offset="1" stop-color="#b41800" />
+            </radialGradient>
+            <radialGradient id="_Radial3" cx="0" cy="0" r="1" gradientTransform="translate(500 500) scale(431.411)"
+                gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#ff8700" />
+                <stop offset=".29" stop-color="#ff8600" />
+                <stop offset=".61" stop-color="#fe8400" />
+                <stop offset="1" stop-color="#ed3900" />
+            </radialGradient>
+            <radialGradient id="_Radial4" cx="0" cy="0" r="1" gradientTransform="translate(500 500) scale(272.687)"
+                gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#ffebc5" />
+                <stop offset=".37" stop-color="#ffe8be" />
+                <stop offset=".67" stop-color="#feaf2c" />
+                <stop offset="1" stop-color="#fe9e00" />
+            </radialGradient>
+        </defs>
+    </svg>
     <script src="./index.js"></script>
 </body>
 
