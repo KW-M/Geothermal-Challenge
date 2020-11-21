@@ -1,0 +1,10 @@
+.my-modal {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 1000ms linear;
+}
+ 
+.my-modal.modal-active {
+    visibility: visible;
+    opacity: 1;
+}
