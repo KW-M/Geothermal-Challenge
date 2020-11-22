@@ -1,20 +1,60 @@
-#planet_surface_container, #planet {
+.planet {
+  position: fixed;
+  top: 30vh;
+  left: 50%;
+  // display: none;
+
+  height: 3500px;
+
+  user-select: none;
+  transform: translateX(-50%) translateY(40vh) scale(0.55);
+  transform-origin: top;
+  pointer-events: none;
+}
+
+#miniplanet {
+  cursor: pointer;
+}
+
+#earth_powerstations_l {
+  opacity: 0;
+}
+
+#earth_powerstations_r {
+  opacity: 0;
+}
+
+#earth_scale_cutaway_l {
+  visibility: hidden;
+}
+
+#earth_scale_cutaway_r {
+  visibility: hidden;
+}
+
+#half_circle_r{
+  transform: translateX(50%);
+}
+
+#planet_surface_container {
   position: fixed;
   top: 30vh;
   left: 50%;
 
-  height: 8000px;
+  visibility: hidden;
+
+  height: 1750px;
 
   transform: translateX(-50%) rotate(0deg);
 }
 
 .surface-image {
   position: absolute;
-  top: -10px;
+  top: 0;
   left: 50%;
 
   width: 50px;
 
   transform: translateX(-50%) rotate(0deg);
-  transform-origin: 0 4000px;
+  transform-origin: 50% 1750px;
 }
