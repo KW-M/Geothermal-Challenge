@@ -21,6 +21,13 @@ body {
     line-height: 1.25rem;
 }
 
+.modals-container {
+  position: fixed;
+  z-index: 200;
+
+  background-color: antiquewhite;
+}
+
 .scroll-extender {
     position: absolute;
 

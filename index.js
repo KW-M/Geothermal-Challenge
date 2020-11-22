@@ -21,10 +21,12 @@ function scrollHandler() {
 }
 
 
+var modalInstance;
+
 window.openModal = (modal_id)=>{
     console.log("modal_id",modal_id)
     var modalEl = document.createElement('div');
-    modalEl.innerHTML = '<p>The world\'s simplest modal is showing!</p><button class="close-btn" onclick="closeModal()">Close Modal</button>';
+    modalEl.innerHTML = '<p>The world\'s simplest modal is showing!</p><button class="close-btn">Close Modal</button>';
     var closeButton = modalEl.getElementsByClassName('close-btn')[0];
     var showButton = document.getElementsByClassName('surface-image')[0];
 
@@ -34,10 +36,15 @@ window.openModal = (modal_id)=>{
         activeClass: 'modal-active'
     });
 
+    closeButton.addEventListener('click', function () {
+               modal.hide();
+      });
+
 }
 
-function closeModal(modal){
-    modal.hide();
+window.closeModal = function(modal) {
+    console.log(modalInstance)
+    modalInstance.hide();
 }
 
 // function resizeHandler() {
