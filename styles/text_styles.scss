@@ -97,34 +97,14 @@
     top: 293px;
   }
 
-  #intro_text_2 {
-    // top: 1228px;
+  #intro_text_2, #intro_text_3 ,#intro_text_4 {
     position: fixed;
-    top: 18vh;
+    top: 16vh;
+
+    display: none;
 
     transform: translate(-50%,-50%);
 
     opacity: 0;
-    // background-color: transparent;
-  }
 
-  #intro_text_3 {
-    position: fixed;
-    top: 18vh;
-
-    transform: translate(-50%,-50%);
-
-    opacity: 0;
-    // background-color: transparent;
-  }
-
-  #intro_text_4 {
-    // top: 2592px;
-    position: fixed;
-    top: 18vh;
-
-    transform: translate(-50%,-50%);
-
-    opacity: 0;
-    // background-color: transparent;
   }

@@ -9,22 +9,25 @@ body {
 
   height: 100vh;
 
+  transition: background 1s ease;
   text-decoration: inherit;
   letter-spacing: 0.04em;
   text-transform: inherit;
 
-  background: rgb(7,70,153);
-background: linear-gradient(175deg, rgba(7,70,153,1) 0%, rgba(71,145,216,1) 28%, rgba(143,190,214,1) 56%);
   background-color: black;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center center;
-  background-size: cover;
 
   font-family: "Roboto", "Helvetica Neue", sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.25rem;
+}
+
+body.sky-bg {
+  background: linear-gradient(175deg, rgba(7,70,153,1) 0%, rgba(71,145,216,1) 28%, rgba(143,190,214,1) 56%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
 }
 
 .scroll-extender {

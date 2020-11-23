@@ -10,33 +10,36 @@ MicroModal.init({
 // import ScrollTrigger from "gsap/ScrollTrigger";
 
 var introTimeline = gsap.timeline().pause()
-introTimeline.to("#earth_planet",{y:0, duration: 2, ease:"power1"})
-
-introTimeline.to("#intro_text_2",{opacity:1, duration: 0.5, ease:"none"},"-=1.1")
-introTimeline.to("#earth_powerstations_l, #earth_powerstations_r",{opacity:1, duration: 0.5, ease:"none"},"-=0.8")
-introTimeline.to("#intro_text_2",{opacity:0, duration: 0.5, ease:"none"},"+=0.8")
-introTimeline.to("#intro_text_3",{opacity:1, duration: 0.5, ease:"none"},"+=0.1")
-introTimeline.to("#intro_text_3",{opacity:0, duration: 0.5, ease:"none"},"+=0.8")
-introTimeline.to("#intro_text_4",{opacity:1, duration: 0.5, ease:"none"},"+=0.1")
-introTimeline.to("#intro_text_4",{opacity:0, duration: 0.5, ease:"none"},"+=0.8")
+introTimeline.to("#earth_planet", { y: 0, duration: 2, ease: "power1" })
+introTimeline.set("#intro_text_2", { display: "block" }, "-=1.1")
+introTimeline.to("#intro_text_2", { opacity: 1, duration: 0.5, ease: "none" }, "-=1.1")
+introTimeline.to("#earth_powerstations_l, #earth_powerstations_r", { opacity: 1, duration: 0.5, ease: "none" }, "-=0.8")
+introTimeline.to("#intro_text_2", { opacity: 0, display: 'none', duration: 0.5, ease: "none" }, "+=0.8")
+introTimeline.set("#intro_text_3", { display: "block" })
+introTimeline.to("#intro_text_3", { opacity: 1, duration: 0.5, ease: "none" }, "+=0.1")
+introTimeline.to("#intro_text_3", { opacity: 0, display: 'none', duration: 0.5, ease: "none" }, "+=0.8")
+introTimeline.set("#intro_text_4", { display: "block" })
+introTimeline.to("#intro_text_4", { opacity: 1, duration: 0.5, ease: "none" }, "+=0.1")
+introTimeline.to("#intro_text_4", { opacity: 0, display: 'none', duration: 0.5, ease: "none" }, "+=0.5")
+introTimeline.to("#intro_title,#intro_text_1", { display: "none", duration: 0, ease: "none" }) // ---------
 // Earth cuttaway transition:
-introTimeline.set("#earth_scale_cutaway_r", {visibility:"visible"},"-=1.5")
-introTimeline.set("#half_circle_r_clip_path", {scaleX:1},"-=1.5")
-introTimeline.to("#half_circle_r_clip_path", {scaleX:0,duration: 0.5, ease:"power1.in"},"-=1.5")
-introTimeline.set("#earth_powerstations_r", {visibility:"hidden"},"-=1")
-introTimeline.set("#earth_scale_cutaway_l",{visibility:"visible",scaleX:0,transformOrigin:"50% 50%" },"-=1")
-introTimeline.to("#earth_scale_cutaway_l",{scaleX:1,duration: 0.5,ease:"power1.out"},"-=1")
-introTimeline.set("#earth_scale_cutaway_l,#earth_powerstations_l,#earth_powerstations_r", {visibility:"hidden"})
+introTimeline.to("#earth_scale_cutaway_r", { display: "inline", duration: 0, ease: "none" }, "-=1.5") /// -----
+introTimeline.set("#half_circle_r_clip_path", { scaleX: 1 }, "-=1.5")
+introTimeline.to("#half_circle_r_clip_path", { scaleX: 0, duration: 0.5, ease: "power1.in" }, "-=1.5")
+introTimeline.set("#earth_powerstations_r", { display: "none" }, "-=1")/// -----
+introTimeline.set("#earth_scale_cutaway_l", { display: "inline", scaleX: 0, transformOrigin: "50% 50%" }, "-=1")
+introTimeline.to("#earth_scale_cutaway_l", { scaleX: 1, duration: 0.5, ease: "power1.out" }, "-=1")
+introTimeline.to("#earth_scale_cutaway_l,#earth_powerstations_l,#earth_powerstations_r", { display: "none", duration: 0, ease: "none" })
 
-introTimeline.set("body",{backgroundColor:"#3174e6"},"-=0.8")
-introTimeline.set("#miniplanet",{visibility:"visible",y:0},"-=0.8")
-introTimeline.to("#earth_planet",{opacity:0, duration: 0.5, ease:"none"},"-=0.8")
-introTimeline.set("#earth_planet",{visibility:"hidden"})
-introTimeline.to("#miniplanet",{scale:1, duration: 1.5, ease:"power1.inOut"},"-=0.5")
+// introTimeline.set("body",{backgroundColor:"#3174e6"},"-=0.8")
+introTimeline.to("#miniplanet", { display: "block", duration: 0, ease: "none" }, "-=0.8") /// -------
+introTimeline.to("#earth_planet", { opacity: 0, display: 'none', duration: 0.5, ease: "none" })
+introTimeline.to("#miniplanet", { scale: 1, duration: 1.5, ease: "power1.inOut" }, "-=0.5")
+// introTimeline.to("#miniplanet",{className:"planet zoomed-in",duration:0})
+introTimeline.set("body",{className:"sky-bg"})
 introTimeline.to(".star-background",{opacity:0, duration:0.5,ease:"none"},"-=0.8")
-introTimeline.set(".star-background",{visibility:"hidden"},"-=0")
-introTimeline.set("#planet_surface_container",{visibility:"visible",opacity:0},"-=0")
-introTimeline.to("#planet_surface_container",{opacity:1,duration: 0.5},"-=0")
+introTimeline.set(".star-background",{display:"none"},"-=0")
+introTimeline.to("#planet_surface_container", { className:"visible", display:"block", duration: 0, ease:0 }, "-=0")
 
 
 // var request = null;
@@ -55,8 +58,8 @@ function scrollHandler() {
 
     if (scrollY < animStop) {
         introTimeline.seek(scrollY / animStop * 10)
-     } else {
-        gsap.to('#planet_surface_container',0.5,{rotation: - scrollY / 200})
+    } else {
+        gsap.to('#planet_surface_container', 0.5, { rotation: - scrollY / 200 })
     }
     // cancelAnimationFrame(request);
     // request = requestAnimationFrame((e) => {
@@ -81,10 +84,10 @@ function pointerMoveHandler(e) {
     if (pointerDown) {
         var deltaX = pointerPostionX - lastPointerPostionX;
         var deltaY = pointerPostionY - lastPointerPostionY;
-        console.log(deltaX,deltaY)
+        console.log(deltaX, deltaY)
         if (Math.abs(deltaX) > Math.abs(deltaY)) {
             e.preventDefault()
-            window.scrollBy(0,-deltaX);
+            window.scrollBy(0, -deltaX);
         }
         lastPointerPostionX = pointerPostionX
         lastPointerPostionY = pointerPostionY
@@ -92,18 +95,27 @@ function pointerMoveHandler(e) {
 };
 
 var openModelId = null;
-window.openModal = function(event,modalId){
-    console.log(modalId)
+window.openModal = function (event, modalId) {
+    if (modalId == openModelId) return;
+    event.stopPropagation()
     window.closeModal()
+    var modalElem = document.getElementById(modalId)
+    modalElem.style.display = 'block';
     MicroModal.show(modalId); // [1]
     openModelId = modalId;
-event.stopPropagation()
+
+    setTimeout(function () {
+        if (modalId != openModelId) modalElem.style.display = 'none';
+    }, 500)
 }
 
-window.closeModal = function(){
+window.closeModal = function () {
     if (openModelId) {
         MicroModal.close(openModelId);
         openModelId = null;
+        setTimeout(function () {
+            if (modalId != openModelId) modalElem.style.display = 'none';
+        }, 500)
     }
 }
 
