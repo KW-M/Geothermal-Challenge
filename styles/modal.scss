@@ -1,10 +1,141 @@
-.my-modal {
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 1000ms linear;
+.modals-container {
+  position: fixed;
+  z-index: 200;
+  top: 0;
+  right: 20px;
+  bottom: 10vh;
+  left: 20px;
+
+  overflow: visible;
+
+  pointer-events: none;
 }
- 
-.my-modal.modal-active {
-    visibility: visible;
-    opacity: 1;
+
+.info-modal {
+  position: absolute;
+  top: 0;
+
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 380px;
+  max-height: 100%;
+
+  transition-timing-function: ease-out;
+  transition-duration: 500ms;
+  transition-property: opacity, transform;
+  transform: translateY(-120%);
+
+  opacity: 0;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background: white;
+  box-shadow: 0 0px 28px rgba(0, 0, 0, 0.192);
+}
+
+.info-modal.is-open {
+  display: flex;
+
+  transition-timing-function: ease-out;
+  transform: translateY(0);
+  pointer-events: all;
+
+  opacity: 1;
+}
+
+.modal-header {
+  position: relative;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+
+  padding: 28px 28px 18px 28px;
+
+  h2 {
+    box-sizing: border-box;
+    margin-top: 0;
+    margin-bottom: 0;
+
+    color: #00449e;
+
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  .modal-close {
+    height: 28px;
+
+    border: 0;
+    border-radius: 60px;
+    background: transparent;
+
+    font-size: 20px;
+  }
+  .modal-close:hover,
+  .modal-close:focus,
+  .modal-close:active {
+    outline: none;
+    background: #6576ff3d;
+  }
+  .modal-close:before {
+    content: "\2715";
+  }
+}
+.modal-content {
+  overflow-y: auto;
+
+  padding: 0 28px 28px 28px;
+
+  color: rgba(0, 0, 0, 0.8);
+
+  font-size: 15px;
+  line-height: 1.5;
+}
+.info-modal:after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  display: block;
+
+  height: 54px;
+
+  content: " ";
+
+  background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+}
+
+/* Using SCSS variables to store breakpoints */
+$breakpoint-tablet: 768px;
+@media (max-width: $breakpoint-tablet) {
+  .modals-container {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  .info-modal {
+    top: unset;
+    bottom: 0;
+
+    max-width: unset;
+    max-height: 70vh;
+    padding: 0 20px;
+
+    transform: translateY(120%);
+
+    border-radius: 16px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
 }

@@ -17,15 +17,15 @@
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
 
-        <!-- TODO: ADD map credits -->
-        <!--
+    <!-- TODO: ADD map credits -->
+    <!--
             !!!!!!
          -->
 </head>
 
 <body>
     <div class="star-background"></div>
-    <div class="scroll-extender">
+    <div class="scroll-extender" onclick="closeModal()">
         <section class="intro-text">
             <h1 id="intro_title">
                 <span class="green-text">Green & Unseen</span>
@@ -45,23 +45,24 @@
                 But change is on the horizon...
             </h3>
             <h3 id="intro_text_4">
-                New technologies are allowing us to tap geothermal heat almost <span class="blue-text">anywhere in the world</span> and turn it into
-                <span class="yellow-text">power for our cities</span>, <span class="orange-text">heat for our homes</span>, and <span class="green-text">even valuable minerals</span>.
+                New technologies are allowing us to tap geothermal heat almost <span class="blue-text">anywhere in the
+                    world</span> and turn it into
+                <span class="yellow-text">power for our cities</span>, <span class="orange-text">heat for our
+                    homes</span>, and <span class="green-text">even valuable minerals</span>.
             </h3>
         </section>
     </div>
 
 
-    <img class="planet" id="miniplanet" src="Artboard1.svg" >
+    <img class="planet" id="miniplanet" src="Artboard1.svg" loading="lazy">
     <div id="planet_surface_container">
-        <img src="Mountains.svg" class="surface-image"
-            style="width:200px; transform: translateX(-50%) rotate(-5deg) translateY(-30px);" onclick="alert('yay')">
-        <img src="Mountains.svg" class="surface-image"
-            style="width:500px; transform: translateX(-50%) rotate(20deg) translateY(-115px);" onclick="alert('yay')">
+        <img src="Mountains.svg" loading="lazy" onclick="openModal(event,'modal_1')" class="surface-image"
+            style="top: -190px; width:200px; transform: translateX(-50%) rotate(-5deg);" />
+        <img src="Mountains.svg" loading="lazy" onclick="alert('i')" class="surface-image"
+            style="top: -30px; width:500px; transform: translateX(-50%) rotate(20deg);" />
         <!-- <img src="Quick Sketch.png" class="surface-image"
             style="width:4000px; transform: translateX(-50%) rotate(0deg) translateY(-1175px);opacity: 0.9;"
             onclick="alert('yay')"> -->
-
     </div>
 
 
@@ -92,7 +93,8 @@
                 <circle cx="500" cy="499.99" r="100.2" fill="#effcf7" />
             </g>
             <clipPath id="half_circle_r">
-                <path id="half_circle_r_clip_path" d="M0 1000c275.96 0 500-224.04 500-500C500 224.04 275.96 0 0 0v1000z" />
+                <path id="half_circle_r_clip_path"
+                    d="M0 1000c275.96 0 500-224.04 500-500C500 224.04 275.96 0 0 0v1000z" />
             </clipPath>
 
             <clipPath id="half_circle_l">
@@ -111,19 +113,47 @@
                 <stop offset=".29" stop-color="#ff8600" />
                 <stop offset=".61" stop-color="#fe8400" />
                 <stop offset="1" stop-color="#ed3900" />
-            <radialGradient id="_Radial4" cx="0" cy="0" r="1" gradientTransform="translate(500 500) scale(272.687)"
-                gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="#ffebc5" />
-                <stop offset=".37" stop-color="#ffe8be" />
-                <stop offset=".67" stop-color="#feaf2c" />
-                <stop offset="1" stop-color="#fe9e00" />
-            </radialGradient>
+                <radialGradient id="_Radial4" cx="0" cy="0" r="1" gradientTransform="translate(500 500) scale(272.687)"
+                    gradientUnits="userSpaceOnUse">
+                    <stop offset="0" stop-color="#ffebc5" />
+                    <stop offset=".37" stop-color="#ffe8be" />
+                    <stop offset=".67" stop-color="#feaf2c" />
+                    <stop offset="1" stop-color="#fe9e00" />
+                </radialGradient>
         </defs>
     </svg>
+    <div class="modals-container">
+        <div id="modal_1" class="info-modal" aria-hidden="true" role="dialog" aria-modal="true">
+            <header class="modal-header">
+                <h2>
+                    Existing Hydrothermal
+                </h2>
+                <button class="modal-close" aria-label="Close modal" onclick="closeModal()"></button>
+            </header>
+            <div class="modal-content">
+                <p>
+                    The load event fires when the eagerly-loaded content has all been loaded; at that time, it's entirely possible (or even likely) that there may be lazily-loaded images that are within the visual viewport that haven't yet loaded.
+
+                    You can determine if a given image has finished loading by examining the value of its Boolean complete property.
+
+                    Polyfill
+                    Include this polyfill to provide support for older and currently incompatible browsers:
+                    loading-attribute-polyfill
+
+                    Intersection Observer API
+                    Intersection Observers allow the user to know when an observed element enters or exits the browser’s viewport.
+
+                    Event handlers
+                    When browser compatibility is crucial, there are a few options:
+
+                        polyfill intersection observer
+                        fallback to scroll, resize or orientation change event handlers to determine if a specific element is in viewport
+
+            </p>
+            </div>
+        </div>
+    </div>
     <script src="./index.js"></script>
-            </radialGradient>
-        <img src="Mountains.svg" onclick="openModal('Mountains1')" class="surface-image" style="top: -190px; width:200px; transform: translateX(-50%) rotate(-5deg);" >
-        <img src="Mountains.svg" onclick="openModal('Mountains2')" class="surface-image" style="top: -30px; width:500px; transform: translateX(-50%) rotate(20deg);" >
 </body>
 
 </html>

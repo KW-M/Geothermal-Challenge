@@ -1,6 +1,12 @@
 // Green Sock Animation
 import gsap from "gsap";
-const Modal = require('modal-js')
+import micromodal from "micromodal";
+import MicroModal from 'micromodal';  // es6 module
+MicroModal.init({
+    awaitCloseAnimation: true, // [9]
+})
+// const Modal = require('modal-js')
+
 // import ScrollTrigger from "gsap/ScrollTrigger";
 
 var introTimeline = gsap.timeline().pause()
@@ -84,30 +90,21 @@ function pointerMoveHandler(e) {
         lastPointerPostionY = pointerPostionY
     }
 };
-var modalInstance;
 
-window.openModal = (modal_id)=>{
-    console.log("modal_id",modal_id)
-    var modalEl = document.createElement('div');
-    modalEl.innerHTML = '<p>The world\'s simplest modal is showing!</p><button class="close-btn">Close Modal</button>';
-    var closeButton = modalEl.getElementsByClassName('close-btn')[0];
-    var showButton = document.getElementsByClassName('surface-image')[0];
-
-    // start your modal instance
-    var modal = new Modal.default(modalEl, {
-        containerEl: document.getElementsByClassName('modals-container')[0],
-        activeClass: 'modal-active'
-    });
-
-    closeButton.addEventListener('click', function () {
-               modal.hide();
-      });
-
+var openModelId = null;
+window.openModal = function(event,modalId){
+    console.log(modalId)
+    window.closeModal()
+    MicroModal.show(modalId); // [1]
+    openModelId = modalId;
+event.stopPropagation()
 }
 
-window.closeModal = function(modal) {
-    console.log(modalInstance)
-    modalInstance.hide();
+window.closeModal = function(){
+    if (openModelId) {
+        MicroModal.close(openModelId);
+        openModelId = null;
+    }
 }
 
 // function resizeHandler() {
@@ -127,30 +124,29 @@ scrollHandler()
 
 
 
-document.addEventListener("mousedown",function (e) {
-    lastPointerPostionX = e.clientX
-    pointerDown = true
-});
-document.addEventListener("touchstart",function (e) {
-    lastPointerPostionX = e.touches[0].clientX
-    pointerDown = true
-});
-document.addEventListener("mouseup",function () {
-    pointerDown = false
-});
-document.addEventListener("touchend",function () {
-    pointerDown = false
-});
-document.addEventListener("mousemove",function (e) {
-    pointerPostionX = e.clientX
-    pointerPostionY = e.clientY
-    pointerMoveHandler(e);
-},{ passive: false });
-document.addEventListener("touchmove",function (e) {
-    // console.log(e.touches[0])
-    e.preventDefault();
-    pointerPostionX = e.touches[0].clientX
-    pointerPostionY = e.touches[0].clientY
-    pointerMoveHandler(e);
-});
-});
+// document.addEventListener("mousedown",function (e) {
+//     lastPointerPostionX = e.clientX
+//     pointerDown = true
+// });
+// document.addEventListener("touchstart",function (e) {
+//     lastPointerPostionX = e.touches[0].clientX
+//     pointerDown = true
+// });
+// document.addEventListener("mouseup",function () {
+//     pointerDown = false
+// });
+// document.addEventListener("touchend",function () {
+//     pointerDown = false
+// });
+// document.addEventListener("mousemove",function (e) {
+//     pointerPostionX = e.clientX
+//     pointerPostionY = e.clientY
+//     pointerMoveHandler(e);
+// },{ passive: false });
+// document.addEventListener("touchmove",function (e) {
+//     // console.log(e.touches[0])
+//     e.preventDefault();
+//     pointerPostionX = e.touches[0].clientX
+//     pointerPostionY = e.touches[0].clientY
+//     pointerMoveHandler(e);
+// });

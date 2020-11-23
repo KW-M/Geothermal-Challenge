@@ -1,13 +1,13 @@
 {
-  "name": "kyle-portfolio",
+  "name": "Geothermal_Design_Challenge_Site",
   "version": "2.0.0",
-  "description": "My Web Portfolio",
+  "description": "Web Infographic for the 2020 Geothermal Design Challenge",
   "repository": "",
   "main": "index.js",
   "scripts": {
     "watch": "parcel index.html"
   },
-  "author": "Kyle W-M",
+  "author": "Kyle Worcester-Moore, Krishna Kumar Pandian, & Ryan Anderson",
   "license": "MIT",
   "browserslist": "> 0.25%, not dead",
   "devDependencies": {
@@ -15,6 +15,6 @@
   },
   "dependencies": {
     "gsap": "^3.5.1",
-    "modal-js": "^3.0.1"
+    "micromodal": "^0.4.6"
   }
 }
