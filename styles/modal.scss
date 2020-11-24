@@ -21,10 +21,10 @@
 
   box-sizing: border-box;
   width: 100%;
-  max-width: 380px;
+  max-width: 420px;
   max-height: 100%;
 
-  transition-timing-function: ease-out;
+  transition-timing-function: ease;
   transition-duration: 500ms;
   transition-property: opacity, transform;
   transform: translateY(-120%);
@@ -39,7 +39,6 @@
 .info-modal.is-open {
   display: flex;
 
-  transition-timing-function: ease-out;
   transform: translateY(0);
   pointer-events: all;
 
@@ -64,7 +63,7 @@
     margin-top: 0;
     margin-bottom: 0;
 
-    color: #00449e;
+    color: #d74510;//#00449e
 
     font-size: 1.25rem;
     font-weight: 600;
@@ -72,7 +71,9 @@
   }
 
   .modal-close {
-    height: 28px;
+    height: 32px;
+
+cursor: pointer;
 
     border: 0;
     border-radius: 60px;
@@ -84,7 +85,7 @@
   .modal-close:focus,
   .modal-close:active {
     outline: none;
-    background: #6576ff3d;
+    background: #d7451033;
   }
   .modal-close:before {
     content: "\2715";
@@ -130,7 +131,7 @@ $breakpoint-tablet: 768px;
 
     max-width: unset;
     max-height: 70vh;
-    padding: 0 20px;
+    // padding: 0 20px;
 
     transform: translateY(120%);
 

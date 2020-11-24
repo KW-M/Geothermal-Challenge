@@ -3,7 +3,8 @@ import gsap from "gsap";
 import micromodal from "micromodal";
 import MicroModal from 'micromodal';  // es6 module
 MicroModal.init({
-    awaitCloseAnimation: true, // [9]
+    // awaitCloseAnimation: true, // [9]
+    disableScroll:true,
 })
 // const Modal = require('modal-js')
 
@@ -59,7 +60,7 @@ function scrollHandler() {
     if (scrollY < animStop) {
         introTimeline.seek(scrollY / animStop * 10)
     } else {
-        gsap.to('#planet_surface_container', 0.5, { rotation: - scrollY / 200 })
+        gsap.to('#planet_surface_container', 0.5, { rotation: (animStop - scrollY) / 100 })
     }
     // cancelAnimationFrame(request);
     // request = requestAnimationFrame((e) => {
@@ -99,23 +100,22 @@ window.openModal = function (event, modalId) {
     if (modalId == openModelId) return;
     event.stopPropagation()
     window.closeModal()
-    var modalElem = document.getElementById(modalId)
-    modalElem.style.display = 'block';
     MicroModal.show(modalId); // [1]
+    // var modalElem = document.getElementById(modalId)
+    // modalElem.style.display = 'flex';
+    // var lastModalId = openModelId;
+    // setTimeout(function () {
+    //     if (lastModalId != openModelId) {
+    //         console.log(lastModalId,openModelId)
+    //     }document.getElementById(lastModalId).style.display = 'none';
+    // }, 1000)
     openModelId = modalId;
-
-    setTimeout(function () {
-        if (modalId != openModelId) modalElem.style.display = 'none';
-    }, 500)
 }
 
 window.closeModal = function () {
     if (openModelId) {
         MicroModal.close(openModelId);
         openModelId = null;
-        setTimeout(function () {
-            if (modalId != openModelId) modalElem.style.display = 'none';
-        }, 500)
     }
 }
 
