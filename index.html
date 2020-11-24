@@ -53,77 +53,100 @@
         </section>
     </div>
 
-
-    <!-- <img  src="Artboard1.svg" loading="lazy"> -->
-    <svg class="planet" id="miniplanet" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" clip-rule="evenodd" viewBox="0 -3 1000 1000"><circle cx="500" cy="500" r="500" fill="url(#prefix___Radial5)"/><path fill="#678c0c" d="M500 0c275.96 0 500 224.04 500 500 0 275.96-224.04 500-500 500C224.04 1000 0 775.96 0 500 0 224.04 224.04 0 500 0zm0 2c274.85 0 498 223.15 498 498S774.85 998 500 998 2 774.85 2 500 225.15 2 500 2z"/><defs><radialGradient id="prefix___Radial5" cx="0" cy="0" r="1" gradientTransform="matrix(500 0 0 500 500 500)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffeac2"/><stop offset=".19" stop-color="#fff"/><stop offset=".2" stop-color="#ffe4b3"/><stop offset=".26" stop-color="#fec667"/><stop offset=".34" stop-color="#feab22"/><stop offset=".63" stop-color="#fe8406"/><stop offset=".63" stop-color="#fe8400"/><stop offset=".71" stop-color="#e43700"/><stop offset=".72" stop-color="#dc2e00"/><stop offset=".76" stop-color="#c82300"/><stop offset=".83" stop-color="#982d0c"/><stop offset=".88" stop-color="#833112"/><stop offset=".97" stop-color="#6e3b1d"/><stop offset="1" stop-color="#6c4713"/></radialGradient></defs></svg>
-    <div id="planet_surface_container">
-        <img src="Mountains.svg" loading="lazy" onclick="openModal(event,'modal_1')" class="surface-image"
-            style="top: -190px; width:200px; transform: translateX(-50%) rotate(-5deg);" />
-        <img src="Mountains.svg" loading="lazy" onclick="alert('i')" class="surface-image"
-            style="top: -30px; width:500px; transform: translateX(-50%) rotate(20deg);" />
-        <!-- <img src="Quick Sketch.png" class="surface-image"
+    <div class="planet-size-container">
+        <!-- <img  src="Artboard1.svg" loading="lazy"> -->
+        <svg class="planet" id="miniplanet" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd"
+            stroke-linejoin="round" stroke-miterlimit="2" clip-rule="evenodd" viewBox="0 -3 1000 1000">
+            <circle cx="500" cy="500" r="500" fill="url(#prefix___Radial5)" />
+            <path fill="#678c0c"
+                d="M500 0c275.96 0 500 224.04 500 500 0 275.96-224.04 500-500 500C224.04 1000 0 775.96 0 500 0 224.04 224.04 0 500 0zm0 2c274.85 0 498 223.15 498 498S774.85 998 500 998 2 774.85 2 500 225.15 2 500 2z" />
+            <defs>
+                <radialGradient id="prefix___Radial5" cx="0" cy="0" r="1"
+                    gradientTransform="matrix(500 0 0 500 500 500)" gradientUnits="userSpaceOnUse">
+                    <stop offset="0" stop-color="#ffeac2" />
+                    <stop offset=".19" stop-color="#fff" />
+                    <stop offset=".2" stop-color="#ffe4b3" />
+                    <stop offset=".26" stop-color="#fec667" />
+                    <stop offset=".34" stop-color="#feab22" />
+                    <stop offset=".63" stop-color="#fe8406" />
+                    <stop offset=".63" stop-color="#fe8400" />
+                    <stop offset=".71" stop-color="#e43700" />
+                    <stop offset=".72" stop-color="#dc2e00" />
+                    <stop offset=".76" stop-color="#c82300" />
+                    <stop offset=".83" stop-color="#982d0c" />
+                    <stop offset=".88" stop-color="#833112" />
+                    <stop offset=".97" stop-color="#6e3b1d" />
+                    <stop offset="1" stop-color="#6c4713" />
+                </radialGradient>
+            </defs>
+        </svg>
+        <div id="planet_surface_container">
+            <img src="Mountains.svg" loading="lazy" onclick="openModal(event,'modal_1')" class="surface-image"
+                style="top: -190px; width:200px; transform: translateX(-50%) rotate(-5deg);" />
+            <img src="Mountains.svg" loading="lazy" onclick="alert('i')" class="surface-image"
+                style="top: -30px; width:500px; transform: translateX(-50%) rotate(20deg);" />
+            <!-- <img src="Quick Sketch.png" class="surface-image"
             style="width:4000px; transform: translateX(-50%) rotate(0deg) translateY(-1175px);opacity: 0.9;"
             onclick="alert('yay')"> -->
+        </div>
+        <svg class="planet" id="earth_planet" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd"
+            stroke-linejoin="round" stroke-miterlimit="2" clip-rule="evenodd" viewBox="0 -3 1000 1000">
+            <defs />
+
+
+            <image xlink:href="Earth_Potential.png" id="earth_potential" preserveAspectRatio="xMidYMin slice"
+                width="1000" y="-40" height="339" />
+
+            <use href="#earth_scale_cutaway" id="earth_scale_cutaway_r" />
+
+            <image xlink:href="/Earth_PowerStations.png" id="earth_powerstations_l" clip-path="url(#half_circle_l)"
+                preserveAspectRatio="xMidYMin slice" width="1000" y="-40" height="339"></image>
+            <image xlink:href="/Earth_PowerStations.png" id="earth_powerstations_r" clip-path="url(#half_circle_r)"
+                preserveAspectRatio="xMidYMin slice" width="1000" y="-40" height="339"></image>
+
+            <use href="#earth_scale_cutaway" id="earth_scale_cutaway_l" clip-path="url(#half_circle_l)" />
+
+            <defs>
+                <g id="earth_scale_cutaway">
+                    <circle cx="500" cy="500" r="500" fill="url(#_Radial2)" />
+                    <path fill="#683b00"
+                        d="M500 0c275.96 0 500 224.04 500 500 0 275.96-224.04 500-500 500C224.04 1000 0 775.96 0 500 0 224.04 224.04 0 500 0zm0 1c275.4 0 499 223.6 499 499S775.4 999 500 999 1 775.4 1 500 224.6 1 500 1z" />
+                    <circle cx="500" cy="499.99" r="431.41" fill="url(#_Radial3)" />
+                    <circle cx="500" cy="499.99" r="272.69" fill="url(#_Radial4)" />
+                    <circle cx="500" cy="499.99" r="100.2" fill="#effcf7" />
+                </g>
+                <clipPath id="half_circle_r">
+                    <path id="half_circle_r_clip_path"
+                        d="M0 1000c275.96 0 500-224.04 500-500C500 224.04 275.96 0 0 0v1000z" />
+                </clipPath>
+
+                <clipPath id="half_circle_l">
+                    <path d="M500 1000C224.04 1000 0 775.94 0 500 0 224.03 224.04 0 500 0v1000z" />
+                </clipPath>
+                <radialGradient id="_Radial2" cx="0" cy="0" r="1" gradientTransform="matrix(500 0 0 500 500 500)"
+                    gradientUnits="userSpaceOnUse">
+                    <stop offset="0" stop-color="#f55900" />
+                    <stop offset=".86" stop-color="#dc2b00" />
+                    <stop offset=".93" stop-color="#bf1d00" />
+                    <stop offset="1" stop-color="#b41800" />
+                </radialGradient>
+                <radialGradient id="_Radial3" cx="0" cy="0" r="1" gradientTransform="translate(500 500) scale(431.411)"
+                    gradientUnits="userSpaceOnUse">
+                    <stop offset="0" stop-color="#ff8700" />
+                    <stop offset=".29" stop-color="#ff8600" />
+                    <stop offset=".61" stop-color="#fe8400" />
+                    <stop offset="1" stop-color="#ed3900" />
+                </radialGradient>
+                <radialGradient id="_Radial4" cx="0" cy="0" r="1" gradientTransform="translate(500 500) scale(272.687)"
+                    gradientUnits="userSpaceOnUse">
+                    <stop offset="0" stop-color="#ffebc5" />
+                    <stop offset=".37" stop-color="#ffe8be" />
+                    <stop offset=".67" stop-color="#feaf2c" />
+                    <stop offset="1" stop-color="#fe9e00" />
+                </radialGradient>
+            </defs>
+        </svg>
     </div>
-
-
-    <svg class="planet" id="earth_planet" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" stroke-linejoin="round"
-        stroke-miterlimit="2" clip-rule="evenodd" viewBox="0 -3 1000 1000">
-        <defs />
-
-
-        <image xlink:href="Earth_Potential.png" id="earth_potential" preserveAspectRatio="xMidYMin slice" width="1000"
-            y="-40" height="339" />
-
-        <use href="#earth_scale_cutaway" id="earth_scale_cutaway_r" />
-
-        <image xlink:href="/Earth_PowerStations.png" id="earth_powerstations_l" clip-path="url(#half_circle_l)"
-            preserveAspectRatio="xMidYMin slice" width="1000" y="-40" height="339"></image>
-        <image xlink:href="/Earth_PowerStations.png" id="earth_powerstations_r" clip-path="url(#half_circle_r)"
-            preserveAspectRatio="xMidYMin slice" width="1000" y="-40" height="339"></image>
-
-        <use href="#earth_scale_cutaway" id="earth_scale_cutaway_l" clip-path="url(#half_circle_l)" />
-
-        <defs>
-            <g id="earth_scale_cutaway">
-                <circle cx="500" cy="500" r="500" fill="url(#_Radial2)" />
-                <path fill="#683b00"
-                    d="M500 0c275.96 0 500 224.04 500 500 0 275.96-224.04 500-500 500C224.04 1000 0 775.96 0 500 0 224.04 224.04 0 500 0zm0 1c275.4 0 499 223.6 499 499S775.4 999 500 999 1 775.4 1 500 224.6 1 500 1z" />
-                <circle cx="500" cy="499.99" r="431.41" fill="url(#_Radial3)" />
-                <circle cx="500" cy="499.99" r="272.69" fill="url(#_Radial4)" />
-                <circle cx="500" cy="499.99" r="100.2" fill="#effcf7" />
-            </g>
-            <clipPath id="half_circle_r">
-                <path id="half_circle_r_clip_path"
-                    d="M0 1000c275.96 0 500-224.04 500-500C500 224.04 275.96 0 0 0v1000z" />
-            </clipPath>
-
-            <clipPath id="half_circle_l">
-                <path d="M500 1000C224.04 1000 0 775.94 0 500 0 224.03 224.04 0 500 0v1000z" />
-            </clipPath>
-            <radialGradient id="_Radial2" cx="0" cy="0" r="1" gradientTransform="matrix(500 0 0 500 500 500)"
-                gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="#f55900" />
-                <stop offset=".86" stop-color="#dc2b00" />
-                <stop offset=".93" stop-color="#bf1d00" />
-                <stop offset="1" stop-color="#b41800" />
-            </radialGradient>
-            <radialGradient id="_Radial3" cx="0" cy="0" r="1" gradientTransform="translate(500 500) scale(431.411)"
-                gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="#ff8700" />
-                <stop offset=".29" stop-color="#ff8600" />
-                <stop offset=".61" stop-color="#fe8400" />
-                <stop offset="1" stop-color="#ed3900" />
-            </radialGradient>
-            <radialGradient id="_Radial4" cx="0" cy="0" r="1" gradientTransform="translate(500 500) scale(272.687)"
-                gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="#ffebc5" />
-                <stop offset=".37" stop-color="#ffe8be" />
-                <stop offset=".67" stop-color="#feaf2c" />
-                <stop offset="1" stop-color="#fe9e00" />
-            </radialGradient>
-        </defs>
-    </svg>
     <div class="modals-container">
         <div id="modal_1" class="info-modal" aria-hidden="true" role="dialog" aria-modal="true">
             <header class="modal-header">

@@ -1,13 +1,25 @@
-.planet {
+$planet-diameter: 300vw;
+
+.planet-size-container {
   position: fixed;
-  top: 30vh;
+  top: 0;
   left: 50%;
   // display: none;
 
-  height: 3500px;
+  width: $planet-diameter;
+  height: $planet-diameter;
+
+  transform: translateX(-50%);
+}
+
+.planet {
+  position: absolute;
+  top: 30vh;
+
+  width: 100%;
 
   user-select: none;
-  transform: translateX(-50%) translateY(40vh) scale(0.55);
+  transform: translateY(40vh) scale(0.55);
   transform-origin: top;
   pointer-events: none;
 }
@@ -17,12 +29,12 @@
 
   cursor: pointer;
   // transition: transform 1s ease;
-  transform: translate(-50%,0) scale(0.55);
+  transform: scale(0.55);
 }
 
-#miniplanet.zoomed-in {
-  transform: translate(-50%,0) scale(1);
-}
+// #miniplanet.zoomed-in {
+//   transform: scale(1);
+// }
 
 #earth_powerstations_l {
   opacity: 0;
@@ -40,21 +52,18 @@
   display: none;
 }
 
-#half_circle_r{
+#half_circle_r {
   transform: translateX(50%);
 }
 
 #planet_surface_container {
-  position: fixed;
-  top: 30vh;
-  left: 50%;
-
   display: none;
 
-  height: 1750px;
+  width: 100%;
+  height: 100%;
 
   transition: 0.3s opacity ease;
-  transform: translateX(-50%) rotate(0deg);
+  transform: rotate(0deg);
 
   opacity: 0;
 }
