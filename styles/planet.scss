@@ -9,6 +9,7 @@ $planet-diameter: 300vw;
   width: $planet-diameter;
   height: $planet-diameter;
 
+  cursor: move;
   transform: translateX(-50%);
 }
 
@@ -30,6 +31,21 @@ $planet-diameter: 300vw;
   cursor: pointer;
   // transition: transform 1s ease;
   transform: scale(0.55);
+}
+
+.miniplanet-drawings {
+  transform: scale(1.24) rotate(55deg);
+  pointer-events: none;
+}
+
+.hover-circle {
+  cursor: pointer;
+  pointer-events: all;
+
+  opacity: 0;
+  &:hover {
+    opacity: 1;
+  }
 }
 
 // #miniplanet.zoomed-in {
@@ -57,19 +73,26 @@ $planet-diameter: 300vw;
 }
 
 #planet_surface_container {
+  position: absolute;
+  top: 30vh;
+
   display: none;
 
   width: 100%;
   height: 100%;
 
+  user-select: none;
   transition: 0.3s opacity ease;
-  transform: rotate(0deg);
+  pointer-events: none;
 
   opacity: 0;
+
+  will-change: transform;
 }
 
 #planet_surface_container.visible {
   opacity: 1;
+
 }
 
 .surface-image {
