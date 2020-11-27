@@ -4,7 +4,7 @@ import micromodal from "micromodal";
 import MicroModal from 'micromodal';  // es6 module
 MicroModal.init({
     // awaitCloseAnimation: true, // [9]
-    disableScroll:true,
+    disableScroll: true,
 })
 // const Modal = require('modal-js')
 
@@ -32,15 +32,14 @@ introTimeline.set("#earth_scale_cutaway_l", { display: "inline", scaleX: 0, tran
 introTimeline.to("#earth_scale_cutaway_l", { scaleX: 1, duration: 0.5, ease: "power1.out" }, "-=1")
 introTimeline.to("#earth_scale_cutaway_l,#earth_powerstations_l,#earth_powerstations_r", { display: "none", duration: 0, ease: "none" })
 
-// introTimeline.set("body",{backgroundColor:"#3174e6"},"-=0.8")
 introTimeline.to("#miniplanet", { display: "block", duration: 0, ease: "none" }, "-=0.8") /// -------
-introTimeline.to("#earth_planet", { opacity: 0, display: 'none', duration: 0.5, ease: "none" })
+introTimeline.to("#earth_planet", { opacity: 0, display: 'none', duration: 0.5, ease: "none" },"-=0.8")
 introTimeline.to("#miniplanet", { scale: 1, duration: 1.5, ease: "power1.inOut" }, "-=0.5")
 // introTimeline.to("#miniplanet",{className:"planet zoomed-in",duration:0})
-introTimeline.set("body",{className:"sky-bg"})
-introTimeline.to(".star-background",{opacity:0, duration:0.5,ease:"none"},"-=0.8")
-introTimeline.set(".star-background",{display:"none"},"-=0")
-introTimeline.to("#planet_surface_container", { className:"visible", display:"block", duration: 0, ease:0 }, "-=0")
+introTimeline.set("body", { className: "sky-bg" })
+introTimeline.to(".star-background", { opacity: 0, duration: 0.5, ease: "none" }, "-=0.8")
+introTimeline.set(".star-background", { display: "none" }, "-=0")
+introTimeline.to("#planet_surface_container", { className: "visible", display: "block", duration: 0, ease: 0 }, "-=0.2")
 
 
 // var request = null;
@@ -98,23 +97,22 @@ function pointerMoveHandler(e) {
 var openModelId = null;
 window.openModal = function (event, modalId) {
     if (modalId == openModelId) return;
-    event.stopPropagation()
-    window.closeModal()
+    if (openModelId == null) document.body.style.overflow = 'hidden';
+    window.closeModal(true)
+    document.getElementById(modalId).style.visibility = 'visible';
     MicroModal.show(modalId); // [1]
-    // var modalElem = document.getElementById(modalId)
-    // modalElem.style.display = 'flex';
-    // var lastModalId = openModelId;
-    // setTimeout(function () {
-    //     if (lastModalId != openModelId) {
-    //         console.log(lastModalId,openModelId)
-    //     }document.getElementById(lastModalId).style.display = 'none';
-    // }, 1000)
     openModelId = modalId;
+    event.stopPropagation()
 }
 
-window.closeModal = function () {
+window.closeModal = function (modalTransition) {
     if (openModelId) {
+        if(!modalTransition) document.body.style.overflow = 'auto';
         MicroModal.close(openModelId);
+        var lastModalId = openModelId;
+        setTimeout(function () {
+            if (lastModalId != openModelId) document.getElementById(lastModalId).style.visibility = 'hidden';
+        }, 500)
         openModelId = null;
     }
 }

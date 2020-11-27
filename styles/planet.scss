@@ -1,4 +1,7 @@
+@use './styles/variables' as *;
+
 $planet-diameter: 300vw;
+$planet-scale-down-factor: 0.55;
 
 .planet-size-container {
   position: fixed;
@@ -20,7 +23,7 @@ $planet-diameter: 300vw;
   width: 100%;
 
   user-select: none;
-  transform: translateY(40vh) scale(0.55);
+  transform: translateY(40vh) scale($planet-scale-down-factor);
   transform-origin: top;
   pointer-events: none;
 }
@@ -30,7 +33,7 @@ $planet-diameter: 300vw;
 
   cursor: pointer;
   // transition: transform 1s ease;
-  transform: scale(0.55);
+  transform: scale($planet-scale-down-factor);
 }
 
 .miniplanet-drawings {
@@ -91,8 +94,9 @@ $planet-diameter: 300vw;
 }
 
 #planet_surface_container.visible {
-  opacity: 1;
+  display: block;
 
+  opacity: 1;
 }
 
 .surface-image {
@@ -104,4 +108,64 @@ $planet-diameter: 300vw;
 
   transform: translateX(-50%) rotate(0deg);
   transform-origin: 50% 1750px;
+}
+
+@media (min-width: $screen-xl) {
+  $planet-diameter: 250vw;
+  $planet-scale-down-factor: 0.6;
+  #miniplanet {
+    transform: scale($planet-scale-down-factor);
+  }
+  .planet {
+    transform: translateY(40vh) scale($planet-scale-down-factor);
+  }
+  .planet-size-container {
+    width: $planet-diameter;
+    height: $planet-diameter;
+  }
+}
+
+@media (min-width: $screen-lg) {
+  $planet-diameter: 250vw;
+  $planet-scale-down-factor: 0.65;
+  #miniplanet {
+    transform: scale($planet-scale-down-factor);
+  }
+  .planet {
+    transform: translateY(40vh) scale($planet-scale-down-factor);
+  }
+  .planet-size-container {
+    width: $planet-diameter;
+    height: $planet-diameter;
+  }
+}
+
+@media (max-width: $screen-md) {
+  $planet-diameter: 400vw;
+  $planet-scale-down-factor: 0.25;
+  #miniplanet {
+    transform: scale($planet-scale-down-factor);
+  }
+  .planet {
+    transform: translateY(40vh) scale($planet-scale-down-factor);
+  }
+  .planet-size-container {
+    width: $planet-diameter;
+    height: $planet-diameter;
+  }
+}
+
+@media (max-width: $screen-sm) {
+  $planet-diameter: 500vw;
+  $planet-scale-down-factor: 0.15;
+  #miniplanet {
+    transform: scale($planet-scale-down-factor);
+  }
+  .planet {
+    transform: translateY(40vh) scale($planet-scale-down-factor);
+  }
+  .planet-size-container {
+    width: $planet-diameter;
+    height: $planet-diameter;
+  }
 }
