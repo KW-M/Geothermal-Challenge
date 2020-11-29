@@ -3,8 +3,8 @@
   z-index: 200;
   top: 0;
   right: 20px;
-  bottom: 10vh;
-  left: 20px;
+  bottom: 0vh;
+  left: 0px;
 
   overflow: visible;
 
@@ -13,7 +13,7 @@
 
 .info-modal {
   position: absolute;
-  top: 0;
+  bottom: 0;
 
   display: flex;
   overflow: hidden;
@@ -22,7 +22,7 @@
   box-sizing: border-box;
   width: 100%;
   max-width: 420px;
-  max-height: 100%;
+  max-height: 70vh;
 
   transition-timing-function: ease;
   transition-duration: 500ms;
@@ -32,6 +32,7 @@
   opacity: 0;
   border-bottom-right-radius: 20px;
   border-bottom-left-radius: 20px;
+  border-radius: 20px 20px 20px 0;
   background: white;
   box-shadow: 0 0px 28px rgba(0, 0, 0, 0.192);
 }

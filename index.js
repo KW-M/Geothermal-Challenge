@@ -128,7 +128,14 @@ window.closeModal = function (modalTransition) {
 
 // Bind events to window
 // window.onresize = resizeHandler;
+
+const start = () => {
+    window.scrollTop(0);
+    console.log(reset);
+}
+
 window.onscroll = scrollHandler;
+//window.ready = start;
 scrollHandler()
 
 

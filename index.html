@@ -13,10 +13,10 @@
     <link rel="manifest" href="/site.webmanifest">
     <link rel="stylesheet" href="./style.scss" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <script>
+        history.scrollRestoration = "manual"
+    </script>
     <!-- TODO: ADD map credits -->
     <!--
             !!!!!!
@@ -52,10 +52,10 @@
             </h3>
         </section>
     </div>
+
     <div class="planet-size-container" onclick="closeModal()">
         <!-- <img  src="Artboard1.svg" loading="lazy"> -->
-        <svg class="planet" id="miniplanet" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd"
-            stroke-linejoin="round" stroke-miterlimit="2" clip-rule="evenodd" viewBox="0 -3 1000 1000">
+        <svg class="planet" id="miniplanet" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" clip-rule="evenodd" viewBox="0 -3 1000 1000">
             <circle cx="500" cy="500" r="500" fill="url(#prefix___Radial5)" />
             <path fill="#678c0c"
                 d="M500 0c275.96 0 500 224.04 500 500 0 275.96-224.04 500-500 500C224.04 1000 0 775.96 0 500 0 224.04 224.04 0 500 0zm0 2c274.85 0 498 223.15 498 498S774.85 998 500 998 2 774.85 2 500 225.15 2 500 2z" />
@@ -82,9 +82,7 @@
         <div id="planet_surface_container">
             <!-- <img src="Mountains.svg" loading="lazy" class="surface-image"
                 style="top: -190px; width:200px; transform: translateX(-50%) rotate(-5deg);" /> -->
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                class="miniplanet-drawings" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"
-                clip-rule="evenodd" viewBox="0 0 4000 4000">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="miniplanet-drawings" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" clip-rule="evenodd" viewBox="0 0 4000 4000">
                 <defs />
                 <g id="Cuttaway" style="display: none;">
                     <path id="Sky" fill="url(#_Radial1)" d="M0 0h4000v4000H0z" />
@@ -107,33 +105,35 @@
                         cy="1111.08" r="267.76" fill="#fff" fill-opacity=".56" class="hover-circle" />
                     <circle onclick="openModal(event,'egs_modal')" id="EGS" cx="1200.09" cy="507.81" r="267.76"
                         fill="#fff" fill-opacity=".56" class="hover-circle" />
-                    <circle id="AGS" cx="2062.53" cy="415.54" r="267.76" fill="#fff" fill-opacity=".56"
-                        class="hover-circle" />
-                    <circle id="ground_source_heat_pumps" onclick="openModal(event,'gshp_modal')" cx="864.58" cy="749.81" r="208.09" fill="#fff"
+                    <circle onclick="openModal(event,'AGS')" cx="2062.53" cy="415.54" r="267.76" fill="#fff"
                         fill-opacity=".56" class="hover-circle" />
-                    <circle id="zero_co2_polution" cx="1434.16" cy="266.53" r="145.59" fill="#fff" fill-opacity=".56"
-                        class="hover-circle" />
-                    <circle id="water" cx="2525.85" cy="376.87" r="145.59" fill="#fff" fill-opacity=".56"
-                        class="hover-circle" />
-                    <circle id="direct_uses" cx="2723.12" cy="466.06" r="175.31" fill="#fff" fill-opacity=".56"
-                        class="hover-circle" />
-                    <circle id="jobs" cx="2957.58" cy="616.9" r="152.32" fill="#fff" fill-opacity=".56"
-                        class="hover-circle" />
-                    <circle id="new_drilling_tech" cx="2810.39" cy="966.12" r="194.97" fill="#fff" fill-opacity=".56"
-                        class="hover-circle" />
-                    <circle id="barriers_to_progress" cx="3587.69" cy="1150.14" r="248.21" fill="#fff"
+                    <circle onclick="openModal(event,'gshp_modal')" cx="864.58" cy="749.81" r="208.09" fill="#fff"
                         fill-opacity=".56" class="hover-circle" />
-                    <circle id="what_you_can_do" cx="3725.25" cy="1520.66" r="193.21" fill="#fff" fill-opacity=".56"
-                        class="hover-circle" />
-                    <circle id="deep_egs" cx="3215.36" cy="655.18" r="227.85" fill="#fff" fill-opacity=".56"
-                        class="hover-circle" />
-                    <circle id="rain_or_shine" cx="1784.84" cy="224.56" r="175.44" fill="#fff" fill-opacity=".56"
-                        class="hover-circle" />
-                    <circle id="land_use" cx="2327.93" cy="259.22" r="175.44" fill="#fff" fill-opacity=".56"
-                        class="hover-circle" />
-                    <circle id="economics" cx="3304.63" cy="974.59" r="194.97" fill="#fff" fill-opacity=".56"
-                        class="hover-circle" />
+                    <circle onclick="openModal(event,'zero_co2_polution')" cx="1434.16" cy="266.53" r="145.59"
+                        fill="#fff" fill-opacity=".56" class="hover-circle" />
+                    <circle onclick="openModal(event,'water')" cx="2525.85" cy="376.87" r="145.59" fill="#fff"
+                        fill-opacity=".56" class="hover-circle" />
+                    <circle onclick="openModal(event,'direct_uses')" cx="2723.12" cy="466.06" r="175.31" fill="#fff"
+                        fill-opacity=".56" class="hover-circle" />
+                    <circle onclick="openModal(event,'jobs')" cx="2957.58" cy="616.9" r="152.32" fill="#fff"
+                        fill-opacity=".56" class="hover-circle" />
+                    <circle onclick="openModal(event,'new_drilling_tech')" cx="2810.39" cy="966.12" r="194.97"
+                        fill="#fff" fill-opacity=".56" class="hover-circle" />
+                    <circle id="barriers_to_progress" onclick="openModal(event,'barrier_to_progress')" cx="3587.69"
+                        cy="1150.14" r="248.21" fill="#fff" fill-opacity=".56" class="hover-circle" />
+                    <circle onclick="openModal(event,'what_you_can_do')" cx="3725.25" cy="1520.66" r="193.21"
+                        fill="#fff" fill-opacity=".56" class="hover-circle" />
+                    <circle onclick="openModal(event,'deep_egs')" cx="3215.36" cy="655.18" r="227.85" fill="#fff"
+                        fill-opacity=".56" class="hover-circle" />
+                    <circle onclick="openModal(event,'rain_or_shine')" cx="1784.84" cy="224.56" r="175.44" fill="#fff"
+                        fill-opacity=".56" class="hover-circle" />
+                    <circle onclick="openModal(event,'land_use')" cx="2327.93" cy="259.22" r="175.44" fill="#fff"
+                        fill-opacity=".56" class="hover-circle" />
+                    <circle onclick="openModal(event,'economics')" cx="3304.63" cy="974.59" r="194.97" fill="#fff"
+                        fill-opacity=".56" class="hover-circle" />
                 </g>
+
+
                 <use width="3548" height="1915" x="255" y="124" xlink:href="#_Image6" />
                 <defs>
                     <radialGradient id="_Radial1" cx="0" cy="0" r="1"
@@ -182,8 +182,7 @@
                 </defs>
             </svg>
         </div>
-        <svg class="planet" id="earth_planet" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd"
-            stroke-linejoin="round" stroke-miterlimit="2" clip-rule="evenodd" viewBox="0 -3 1000 1000">
+        <svg class="planet" id="earth_planet" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" clip-rule="evenodd" viewBox="0 -3 1000 1000">
             <defs />
 
             <image xlink:href="Earth_Potential.png" id="earth_potential" preserveAspectRatio="xMidYMin slice"
@@ -249,17 +248,24 @@
             </header>
             <div class="modal-content">
                 <p>
-                    Today’s geothermal (aka hydrothermal power) is very limited because it requires a location with
-                    large amounts of naturally occurring superheated water trapped within a mile of the surface while
-                    also being close enough to consumer demand to be profitable. It’s a little known fact that the US
-                    leads the world in geothermal electricity generation. The US already generates xxxxx GW of
-                    geothermal power, making up xxxxx % of all energy production in this country. While US geothermal
-                    generates more power overall, Iceland’s 7 xxxxx geothermal & 12 hydropower plants have reliably
-                    generated enough power to supply all the island’s energy needs for years and they even have plans to
-                    export excess electricity to mainland Europe. The US Department of Energy estimates that there are
-                    XX GW of power sitting in untapped hydrothermal systems in this country. But these untapped
-                    resources pale in comparison to the xxx Terawatts that the Department of Energy estimates could be
-                    tapped by new technologies.
+
+                    <ul>
+                        <li>
+                            When you think of geothermal energy, you may think of Iceland.
+                        </li>
+                        <li>
+                            But it’s a little known fact that the US leads the world in geothermal electricity generation!
+                        </li>
+                        <li>
+                            The US generates 2555 MW of geothermal power, making up about xx% of all the energy energy produced domestically.
+                        </li>
+                        <li>
+                            In the US, the Department of Energy estimates that there are XX GW of power sitting in untapped hydrothermal systems (this is enough to ______!)
+                        </li>
+                        <li>
+                            But these untapped resources pale in comparison to the xxx Terawatts that the Department of Energy estimates could be tapped by new technologies like EGS & AGS. (this is enough to ____!)
+                        </li>
+                    </ul>
                 </p>
             </div>
         </div>
@@ -272,32 +278,16 @@
             </header>
             <div class="modal-content">
                 <p>
-                    Taken from DOE, (not ours)
-                    Geothermal heat pumps (GHPs), sometimes referred to as GeoExchange, earth-coupled, ground-source, or
-                    water-source heat pumps, have been in use since the late 1940s. They use the constant temperature of
-                    the earth as the exchange medium instead of the outside air temperature.
-                    Although many parts of the country experience seasonal temperature extremes -- from scorching heat
-                    in the summer to sub-zero cold in the winter—a few feet below the earth's surface the ground remains
-                    at a relatively constant temperature. Depending on latitude, ground temperatures range from 45°F
-                    (7°C) to 75°F (21°C). Like a cave, this ground temperature is warmer than the air above it during
-                    the winter and cooler than the air in the summer. The GHP takes advantage of this by exchanging heat
-                    with the earth through a ground heat exchanger.
-                    As with any heat pump, geothermal and water-source heat pumps are able to heat, cool, and, if so
-                    equipped, supply the house with hot water. Some models of geothermal systems are available with
-                    two-speed compressors and variable fans for more comfort and energy savings. Relative to air-source
-                    heat pumps, they are quieter, last longer, need little maintenance, and do not depend on the
-                    temperature of the outside air.
-                    A dual-source heat pump combines an air-source heat pump with a geothermal heat pump. These
-                    appliances combine the best of both systems. Dual-source heat pumps have higher efficiency ratings
-                    than air-source units, but are not as efficient as geothermal units. The main advantage of
-                    dual-source systems is that they cost much less to install than a single geothermal unit, and work
-                    almost as well.
-                    Even though the installation price of a geothermal system can be several times that of an air-source
-                    system of the same heating and cooling capacity, the additional costs are returned to you in energy
-                    savings in 5 to 10 years. System life is estimated at up to 24 years for the inside components and
-                    50+ years for the ground loop. There are approximately 50,000 geothermal heat pumps installed in the
-                    United States each year. For more information, visit the International Ground Source Heat Pump
-                    Association.
+                    Taken from DOE, (not ours) Geothermal heat pumps (GHPs), sometimes referred to as GeoExchange, earth-coupled, ground-source, or water-source heat pumps, have been in use since the late 1940s. They use the constant temperature of the earth as the exchange
+                    medium instead of the outside air temperature. Although many parts of the country experience seasonal temperature extremes -- from scorching heat in the summer to sub-zero cold in the winter—a few feet below the earth's surface the
+                    ground remains at a relatively constant temperature. Depending on latitude, ground temperatures range from 45°F (7°C) to 75°F (21°C). Like a cave, this ground temperature is warmer than the air above it during the winter and cooler
+                    than the air in the summer. The GHP takes advantage of this by exchanging heat with the earth through a ground heat exchanger. As with any heat pump, geothermal and water-source heat pumps are able to heat, cool, and, if so equipped,
+                    supply the house with hot water. Some models of geothermal systems are available with two-speed compressors and variable fans for more comfort and energy savings. Relative to air-source heat pumps, they are quieter, last longer, need
+                    little maintenance, and do not depend on the temperature of the outside air. A dual-source heat pump combines an air-source heat pump with a geothermal heat pump. These appliances combine the best of both systems. Dual-source heat
+                    pumps have higher efficiency ratings than air-source units, but are not as efficient as geothermal units. The main advantage of dual-source systems is that they cost much less to install than a single geothermal unit, and work almost
+                    as well. Even though the installation price of a geothermal system can be several times that of an air-source system of the same heating and cooling capacity, the additional costs are returned to you in energy savings in 5 to 10 years.
+                    System life is estimated at up to 24 years for the inside components and 50+ years for the ground loop. There are approximately 50,000 geothermal heat pumps installed in the United States each year. For more information, visit the
+                    International Ground Source Heat Pump Association.
                 </p>
             </div>
         </div>
@@ -311,32 +301,243 @@
             </header>
             <div class="modal-content">
                 <p>
-                    Enhanced Geothermal or EGS is daba de daba do daba di da de...
-                    The load event fires when the eagerly-loaded content has all been loaded; at that time, it's
-                    entirely possible (or even likely) that there may be lazily-loaded images that are within the visual
-                    viewport that haven't yet loaded.
+                    Enhanced Geothermal or EGS is daba de daba do daba di da de... The load event fires when the eagerly-loaded content has all been loaded; at that time, it's entirely possible (or even likely) that there may be lazily-loaded images that are within the visual
+                    viewport that haven't yet loaded. You can determine if a given image has finished loading by examining the value of its Boolean complete property. Polyfill Include this polyfill to provide support for older and currently incompatible
+                    browsers: loading-attribute-polyfill Intersection Observer API Intersection Observers allow the user to know when an observed element enters or exits the browser’s viewport. Event handlers When browser compatibility is crucial, there
+                    are a few options: polyfill intersection observer fallback to scroll, resize or orientation change event handlers to determine if a specific element is in viewport
+                </p>
+            </div>
+        </div>
+        <div id="zero_co2_polution" class="info-modal" aria-hidden="true" role="dialog" aria-modal="true">
+            <header class="modal-header">
+                <h2>
+                    Zero CO2, Zero Pollution
+                </h2>
+                <button class="modal-close" aria-label="Close modal" onclick="closeModal()"></button>
+            </header>
+            <div class="modal-content">
+                <p>
+                    Modern geothermal like EGS & AGS use closed-loop systems that emit zero greenhouse gasses or pollutants. Greenhouse gasses like Co2 & Methane (the main gas in natural gas) rise into the atmosphere when we use fossil fuels. These gasses form an atmospheric
+                    “blanket” that causes our planet to slowly heat up. The more gasses we emit, the more this process accelerates. The effects of this are becoming very clear with the record breaking wildfires in the western US & intensifying storms
+                    & flooding in the east. This is why finding sustainable ways to power our future are urgently needed. Fortunately, geothermal is poised to play a key role along with other renewables in reducing Co2 as well as pollutants & smog that
+                    come from burning fossil fuels. Pollutants which cause an estimated 100000xxxxx deaths in the US annually due to respiratory complications. Better still, scientists have found that geothermal systems can be used to store captured Co2
+                    within minerals deep underground. They found that using Co2 in this way can make geothermal power production more efficient.
+                </p>
+            </div>
+        </div>
 
-                    You can determine if a given image has finished loading by examining the value of its Boolean
-                    complete property.
+        <div id="rain_or_shine" class="info-modal" aria-hidden="true" role="dialog" aria-modal="true">
+            <header class="modal-header">
+                <h2>
+                    Rain or Shine
+                </h2>
+                <button class="modal-close" aria-label="Close modal" onclick="closeModal()"></button>
+            </header>
+            <div class="modal-content">
+                <p>
+                    Rain or shine, still or stormy, Geothermal keeps providing stable, clean power 24/7, 365 days a year. Many renewables can’t provide power in certain conditions like solar at night & wind on a calm summer's day. This inconsistent output is possibly the
+                    single biggest issue preventing full use of renewables. But it’s an issue geothermal doesn’t have; making it one of the most reliable sources of sustainable energy. Geothermal can also solve demand spikes - for example when everyone
+                    flicks on the lights at sunset. Today, that spike in electricity is met by firing up highly inefficient & polluting gas-fired “peaker” plants, so everyone’s lights don’t flicker. Next-gen geothermal solves this by using the earth as
+                    a heat battery. By reducing the flow rate through a well, a geothermal plant can let extra heat build up in surrounding rock. When electricity demand spikes, the geothermal plant can let the wells flow at full capacity converting the
+                    extra stored heat directly into a surge of power to meet demand.
 
-                    Polyfill
-                    Include this polyfill to provide support for older and currently incompatible browsers:
-                    loading-attribute-polyfill
+                </p>
+            </div>
+        </div>
 
-                    Intersection Observer API
-                    Intersection Observers allow the user to know when an observed element enters or exits the browser’s
-                    viewport.
 
-                    Event handlers
-                    When browser compatibility is crucial, there are a few options:
+        <div id="AGS" class="info-modal" aria-hidden="true" role="dialog" aria-modal="true">
+            <header class="modal-header">
+                <h2>
+                    AGS
+                </h2>
+                <button class="modal-close" aria-label="Close modal" onclick="closeModal()"></button>
+            </header>
+            <div class="modal-content">
+                <p>
+                    Rain or shine, still or stormy, Geothermal keeps providing stable, clean power 24/7, 365 days a year. Many renewables can’t provide power in certain conditions like solar at night & wind on a calm summer's day. This inconsistent output is possibly the
+                    single biggest issue preventing full use of renewables. But it’s an issue geothermal doesn’t have; making it one of the most reliable sources of sustainable energy. Geothermal can also solve demand spikes - for example when everyone
+                    flicks on the lights at sunset. Today, that spike in electricity is met by firing up highly inefficient & polluting gas-fired “peaker” plants, so everyone’s lights don’t flicker. Next-gen geothermal solves this by using the earth as
+                    a heat battery. By reducing the flow rate through a well, a geothermal plant can let extra heat build up in surrounding rock. When electricity demand spikes, the geothermal plant can let the wells flow at full capacity converting the
+                    extra stored heat directly into a surge of power to meet demand.
 
-                    polyfill intersection observer
-                    fallback to scroll, resize or orientation change event handlers to determine if a specific element
-                    is in viewport
+                </p>
+            </div>
+        </div>
+
+
+        <div id="land_use" class="info-modal" aria-hidden="true" role="dialog" aria-modal="true">
+            <header class="modal-header">
+                <h2>
+                    Land Use
+                </h2>
+                <button class="modal-close" aria-label="Close modal" onclick="closeModal()"></button>
+            </header>
+            <div class="modal-content">
+                <p>
+                    Rain or shine, still or stormy, Geothermal keeps providing stable, clean power 24/7, 365 days a year. Many renewables can’t provide power in certain conditions like solar at night & wind on a calm summer's day. This inconsistent output is possibly the
+                    single biggest issue preventing full use of renewables. But it’s an issue geothermal doesn’t have; making it one of the most reliable sources of sustainable energy. Geothermal can also solve demand spikes - for example when everyone
+                    flicks on the lights at sunset. Today, that spike in electricity is met by firing up highly inefficient & polluting gas-fired “peaker” plants, so everyone’s lights don’t flicker. Next-gen geothermal solves this by using the earth as
+                    a heat battery. By reducing the flow rate through a well, a geothermal plant can let extra heat build up in surrounding rock. When electricity demand spikes, the geothermal plant can let the wells flow at full capacity converting the
+                    extra stored heat directly into a surge of power to meet demand.
+
+                </p>
+            </div>
+        </div>
+        <div id="water" class="info-modal" aria-hidden="true" role="dialog" aria-modal="true">
+            <header class="modal-header">
+                <h2>
+                    Water
+                </h2>
+                <button class="modal-close" aria-label="Close modal" onclick="closeModal()"></button>
+            </header>
+            <div class="modal-content">
+                <p>
+                    Rain or shine, still or stormy, Geothermal keeps providing stable, clean power 24/7, 365 days a year. Many renewables can’t provide power in certain conditions like solar at night & wind on a calm summer's day. This inconsistent output is possibly the
+                    single biggest issue preventing full use of renewables. But it’s an issue geothermal doesn’t have; making it one of the most reliable sources of sustainable energy. Geothermal can also solve demand spikes - for example when everyone
+                    flicks on the lights at sunset. Today, that spike in electricity is met by firing up highly inefficient & polluting gas-fired “peaker” plants, so everyone’s lights don’t flicker. Next-gen geothermal solves this by using the earth as
+                    a heat battery. By reducing the flow rate through a well, a geothermal plant can let extra heat build up in surrounding rock. When electricity demand spikes, the geothermal plant can let the wells flow at full capacity converting the
+                    extra stored heat directly into a surge of power to meet demand.
+
+                </p>
+            </div>
+        </div>
+        <div id="direct_uses" class="info-modal" aria-hidden="true" role="dialog" aria-modal="true">
+            <header class="modal-header">
+                <h2>
+                    Direct Use
+                </h2>
+                <button class="modal-close" aria-label="Close modal" onclick="closeModal()"></button>
+            </header>
+            <div class="modal-content">
+                <p>
+                    Rain or shine, still or stormy, Geothermal keeps providing stable, clean power 24/7, 365 days a year. Many renewables can’t provide power in certain conditions like solar at night & wind on a calm summer's day. This inconsistent output is possibly the
+                    single biggest issue preventing full use of renewables. But it’s an issue geothermal doesn’t have; making it one of the most reliable sources of sustainable energy. Geothermal can also solve demand spikes - for example when everyone
+                    flicks on the lights at sunset. Today, that spike in electricity is met by firing up highly inefficient & polluting gas-fired “peaker” plants, so everyone’s lights don’t flicker. Next-gen geothermal solves this by using the earth as
+                    a heat battery. By reducing the flow rate through a well, a geothermal plant can let extra heat build up in surrounding rock. When electricity demand spikes, the geothermal plant can let the wells flow at full capacity converting the
+                    extra stored heat directly into a surge of power to meet demand.
+
+                </p>
+            </div>
+        </div>
+
+        <div id="jobs" class="info-modal" aria-hidden="true" role="dialog" aria-modal="true">
+            <header class="modal-header">
+                <h2>
+                    Jobs
+                </h2>
+                <button class="modal-close" aria-label="Close modal" onclick="closeModal()"></button>
+            </header>
+            <div class="modal-content">
+                <p>
+                    Rain or shine, still or stormy, Geothermal keeps providing stable, clean power 24/7, 365 days a year. Many renewables can’t provide power in certain conditions like solar at night & wind on a calm summer's day. This inconsistent output is possibly the
+                    single biggest issue preventing full use of renewables. But it’s an issue geothermal doesn’t have; making it one of the most reliable sources of sustainable energy. Geothermal can also solve demand spikes - for example when everyone
+                    flicks on the lights at sunset. Today, that spike in electricity is met by firing up highly inefficient & polluting gas-fired “peaker” plants, so everyone’s lights don’t flicker. Next-gen geothermal solves this by using the earth as
+                    a heat battery. By reducing the flow rate through a well, a geothermal plant can let extra heat build up in surrounding rock. When electricity demand spikes, the geothermal plant can let the wells flow at full capacity converting the
+                    extra stored heat directly into a surge of power to meet demand.
+
+                </p>
+            </div>
+        </div>
+
+        <div id="new_drilling_tech" class="info-modal" aria-hidden="true" role="dialog" aria-modal="true">
+            <header class="modal-header">
+                <h2>
+                    New Drilling technologies
+                </h2>
+                <button class="modal-close" aria-label="Close modal" onclick="closeModal()"></button>
+            </header>
+            <div class="modal-content">
+                <p>
+                    Rain or shine, still or stormy, Geothermal keeps providing stable, clean power 24/7, 365 days a year. Many renewables can’t provide power in certain conditions like solar at night & wind on a calm summer's day. This inconsistent output is possibly the
+                    single biggest issue preventing full use of renewables. But it’s an issue geothermal doesn’t have; making it one of the most reliable sources of sustainable energy. Geothermal can also solve demand spikes - for example when everyone
+                    flicks on the lights at sunset. Today, that spike in electricity is met by firing up highly inefficient & polluting gas-fired “peaker” plants, so everyone’s lights don’t flicker. Next-gen geothermal solves this by using the earth as
+                    a heat battery. By reducing the flow rate through a well, a geothermal plant can let extra heat build up in surrounding rock. When electricity demand spikes, the geothermal plant can let the wells flow at full capacity converting the
+                    extra stored heat directly into a surge of power to meet demand.
+
+                </p>
+            </div>
+        </div>
+
+
+        <div id="deep_egs" class="info-modal" aria-hidden="true" role="dialog" aria-modal="true">
+            <header class="modal-header">
+                <h2>
+                    EGS
+                </h2>
+                <button class="modal-close" aria-label="Close modal" onclick="closeModal()"></button>
+            </header>
+            <div class="modal-content">
+                <p>
+                    Rain or shine, still or stormy, Geothermal keeps providing stable, clean power 24/7, 365 days a year. Many renewables can’t provide power in certain conditions like solar at night & wind on a calm summer's day. This inconsistent output is possibly the
+                    single biggest issue preventing full use of renewables. But it’s an issue geothermal doesn’t have; making it one of the most reliable sources of sustainable energy. Geothermal can also solve demand spikes - for example when everyone
+                    flicks on the lights at sunset. Today, that spike in electricity is met by firing up highly inefficient & polluting gas-fired “peaker” plants, so everyone’s lights don’t flicker. Next-gen geothermal solves this by using the earth as
+                    a heat battery. By reducing the flow rate through a well, a geothermal plant can let extra heat build up in surrounding rock. When electricity demand spikes, the geothermal plant can let the wells flow at full capacity converting the
+                    extra stored heat directly into a surge of power to meet demand.
+
+                </p>
+            </div>
+        </div>
+
+        <div id="economics" class="info-modal" aria-hidden="true" role="dialog" aria-modal="true">
+            <header class="modal-header">
+                <h2>
+                    Economics
+                </h2>
+                <button class="modal-close" aria-label="Close modal" onclick="closeModal()"></button>
+            </header>
+            <div class="modal-content">
+                <p>
+                    Rain or shine, still or stormy, Geothermal keeps providing stable, clean power 24/7, 365 days a year. Many renewables can’t provide power in certain conditions like solar at night & wind on a calm summer's day. This inconsistent output is possibly the
+                    single biggest issue preventing full use of renewables. But it’s an issue geothermal doesn’t have; making it one of the most reliable sources of sustainable energy. Geothermal can also solve demand spikes - for example when everyone
+                    flicks on the lights at sunset. Today, that spike in electricity is met by firing up highly inefficient & polluting gas-fired “peaker” plants, so everyone’s lights don’t flicker. Next-gen geothermal solves this by using the earth as
+                    a heat battery. By reducing the flow rate through a well, a geothermal plant can let extra heat build up in surrounding rock. When electricity demand spikes, the geothermal plant can let the wells flow at full capacity converting the
+                    extra stored heat directly into a surge of power to meet demand.
+
+                </p>
+            </div>
+        </div>
+
+        <div id="barrier_to_progress" class="info-modal" aria-hidden="true" role="dialog" aria-modal="true">
+            <header class="modal-header">
+                <h2>
+                    Barriers To Progress
+                </h2>
+                <button class="modal-close" aria-label="Close modal" onclick="closeModal()"></button>
+            </header>
+            <div class="modal-content">
+                <p>
+                    Rain or shine, still or stormy, Geothermal keeps providing stable, clean power 24/7, 365 days a year. Many renewables can’t provide power in certain conditions like solar at night & wind on a calm summer's day. This inconsistent output is possibly the
+                    single biggest issue preventing full use of renewables. But it’s an issue geothermal doesn’t have; making it one of the most reliable sources of sustainable energy. Geothermal can also solve demand spikes - for example when everyone
+                    flicks on the lights at sunset. Today, that spike in electricity is met by firing up highly inefficient & polluting gas-fired “peaker” plants, so everyone’s lights don’t flicker. Next-gen geothermal solves this by using the earth as
+                    a heat battery. By reducing the flow rate through a well, a geothermal plant can let extra heat build up in surrounding rock. When electricity demand spikes, the geothermal plant can let the wells flow at full capacity converting the
+                    extra stored heat directly into a surge of power to meet demand.
+
+                </p>
+            </div>
+        </div>
+
+        <div id="what_you_can_do" class="info-modal" aria-hidden="true" role="dialog" aria-modal="true">
+            <header class="modal-header">
+                <h2>
+                    What You Can Do
+                </h2>
+                <button class="modal-close" aria-label="Close modal" onclick="closeModal()"></button>
+            </header>
+            <div class="modal-content">
+                <p>
+                    Rain or shine, still or stormy, Geothermal keeps providing stable, clean power 24/7, 365 days a year. Many renewables can’t provide power in certain conditions like solar at night & wind on a calm summer's day. This inconsistent output is possibly the
+                    single biggest issue preventing full use of renewables. But it’s an issue geothermal doesn’t have; making it one of the most reliable sources of sustainable energy. Geothermal can also solve demand spikes - for example when everyone
+                    flicks on the lights at sunset. Today, that spike in electricity is met by firing up highly inefficient & polluting gas-fired “peaker” plants, so everyone’s lights don’t flicker. Next-gen geothermal solves this by using the earth as
+                    a heat battery. By reducing the flow rate through a well, a geothermal plant can let extra heat build up in surrounding rock. When electricity demand spikes, the geothermal plant can let the wells flow at full capacity converting the
+                    extra stored heat directly into a surge of power to meet demand.
+
                 </p>
             </div>
         </div>
     </div>
+    </div>
+
     <script src="./index.js"></script>
 </body>
 
