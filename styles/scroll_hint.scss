@@ -1,0 +1,73 @@
+// from https://frontendscript.com/demo/scroll-down-arrow-animation-css/
+
+#scroll_hint {
+  position: relative;
+  top: 500px;
+
+  width: 140px;
+  margin: auto;
+  padding: 80px 0 20px 0;
+
+  user-select: none;
+  pointer-events: none;
+
+  border-radius: 200px;
+  background: rgba(0, 0, 0, 0.747);
+
+  font-size: 0.7em;
+  font-weight: 300;
+  span {
+    position: absolute;
+    top: 0;
+    left: 50%;
+
+    box-sizing: border-box;
+    width: 24px;
+    height: 24px;
+    margin-left: -12px;
+
+    transform: rotate(-45deg);
+    animation: sdb07 2s infinite;
+
+    opacity: 0;
+    border-bottom: 1px solid #fff;
+    border-left: 1px solid #fff;
+  }
+
+  span:nth-of-type(1) {
+    animation-delay: 0s;
+  }
+  span:nth-of-type(2) {
+    top: 16px;
+
+    animation-delay: 0.15s;
+  }
+  span:nth-of-type(3) {
+    top: 32px;
+
+    animation-delay: 0.3s;
+  }
+
+  @keyframes sdb07 {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+}
+
+#scroll_hint.scroll-reminder {
+  position: fixed;
+  top: unset;
+  bottom: 0;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  border-radius: 30px 30px 0 0;
+}
