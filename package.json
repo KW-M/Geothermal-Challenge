@@ -1,5 +1,5 @@
 {
-  "name": "Geothermal_Design_Challenge_Site",
+  "name": "geothermal_design_challenge_site",
   "version": "2.0.0",
   "description": "Web Infographic for the 2020 Geothermal Design Challenge",
   "repository": "",
@@ -11,6 +11,7 @@
   "license": "MIT",
   "browserslist": "> 0.25%, not dead",
   "devDependencies": {
+    "parcel": "^1.12.4",
     "sass": "^1.26.11"
   },
   "dependencies": {

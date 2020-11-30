@@ -43,22 +43,18 @@ introTimeline.to("#planet_surface_container", { className: "visible", display: "
 
 
 // var request = null;
-var mouse = { x: 0, y: 0 };
-var cx = window.innerWidth / 2;
-var cy = window.innerHeight / 2;
 var scrollY = window.pageYOffset;
-var scrollChangeFlag = true, mouseChangeFlag = true;
-var animStop = 5000
+var animStop = document.getElementById("scroll_extender").clientHeight;
+
 
 function scrollHandler() {
     // Grab scroll position
     scrollY = window.pageYOffset;
-    scrollChangeFlag = true;
-
 
     if (scrollY < animStop) {
         introTimeline.seek(scrollY / animStop * 10)
     } else {
+        if(introTimeline.progress() < 10) introTimeline.seek(10);
         gsap.to('#planet_surface_container', 0.5, { rotation: (animStop - scrollY) / 100 })
     }
     // cancelAnimationFrame(request);
@@ -69,10 +65,6 @@ function scrollHandler() {
 
 
 function resizeHandler() {
-    cx = window.innerWidth / 2;
-    cy = window.innerHeight / 2;
-    scrollChangeFlag = true;
-    mouseChangeFlag = true;
 }; resizeHandler();
 
 var pointerDown = false
