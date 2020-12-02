@@ -3,7 +3,7 @@
 $planet-diameter: 300vw;
 $planet-scale-down-factor: 0.55;
 
-.planet-size-container {
+#planet_size_container {
   position: fixed;
   top: 0;
   left: 50%;
@@ -12,7 +12,7 @@ $planet-scale-down-factor: 0.55;
   width: $planet-diameter;
   height: $planet-diameter;
 
-  cursor: move;
+  cursor: ew-resize;
   transform: translateX(-50%);
 }
 
@@ -32,7 +32,6 @@ $planet-scale-down-factor: 0.55;
   display: none;
 
   cursor: pointer;
-  // transition: transform 1s ease;
   transform: scale($planet-scale-down-factor);
 }
 

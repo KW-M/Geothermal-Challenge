@@ -2,6 +2,8 @@ body,
 html {
   margin: 0;
   padding: 0;
+
+  overscroll-behavior-x: none;
 }
 
 body {
@@ -46,4 +48,8 @@ body.sky-bg {
   background-image: url("./stars.png");
   background-repeat: repeat;
   background-size: 300px;
+}
+
+.no-touch-action {
+  // touch-action: none;
 }

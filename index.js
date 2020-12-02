@@ -1,161 +1,162 @@
 // Green Sock Animation
 import gsap from "gsap";
-import micromodal from "micromodal";
-import MicroModal from 'micromodal';  // es6 module
-MicroModal.init({
-    // awaitCloseAnimation: true, // [9]
-    disableScroll: true,
-})
-// const Modal = require('modal-js')
+import { introTimeline } from './scripts/ScrollAnim'
+import { planetRotationHandler, showCurrentModal, hideCurrentModal } from './scripts/Modals'
 
-// import ScrollTrigger from "gsap/ScrollTrigger";
+var planetCenterX, planetCenterY = null,
+    planetSizeContainer = document.getElementById("planet_size_container");
 
-var introTimeline = gsap.timeline().pause()
-introTimeline.to("#earth_planet", { y: 0, duration: 2, ease: "power1" })
-introTimeline.set("#intro_text_2", { display: "block" }, "-=1.1")
-introTimeline.to("#intro_text_2", { opacity: 1, duration: 0.5, ease: "none" }, "-=1.1")
-introTimeline.to("#earth_powerstations_l, #earth_powerstations_r", { opacity: 1, duration: 0.5, ease: "none" }, "-=0.8")
-introTimeline.to("#intro_text_2", { opacity: 0, display: 'none', duration: 0.5, ease: "none" }, "+=0.8")
-introTimeline.set("#intro_text_3", { display: "block" })
-introTimeline.to("#intro_text_3", { opacity: 1, duration: 0.5, ease: "none" }, "+=0.1")
-introTimeline.to("#intro_text_3", { opacity: 0, display: 'none', duration: 0.5, ease: "none" }, "+=0.8")
-introTimeline.set("#intro_text_4", { display: "block" })
-introTimeline.to("#intro_text_4", { opacity: 1, duration: 0.5, ease: "none" }, "+=0.1")
-introTimeline.to("#intro_text_4", { opacity: 0, display: 'none', duration: 0.5, ease: "none" }, "+=0.5")
-introTimeline.to("#intro_title,#intro_text_1", { display: "none", duration: 0, ease: "none" }) // ---------
-// Earth cuttaway transition:
-introTimeline.to("#earth_scale_cutaway_r", { display: "inline", duration: 0, ease: "none" }, "-=1.5") /// -----
-introTimeline.set("#half_circle_r_clip_path", { scaleX: 1 }, "-=1.5")
-introTimeline.to("#half_circle_r_clip_path", { scaleX: 0, duration: 0.5, ease: "power1.in" }, "-=1.5")
-introTimeline.set("#earth_powerstations_r", { display: "none" }, "-=1")/// -----
-introTimeline.set("#earth_scale_cutaway_l", { display: "inline", scaleX: 0, transformOrigin: "50% 50%" }, "-=1")
-introTimeline.to("#earth_scale_cutaway_l", { scaleX: 1, duration: 0.5, ease: "power1.out" }, "-=1")
-introTimeline.to("#earth_scale_cutaway_l,#earth_powerstations_l,#earth_powerstations_r", { display: "none", duration: 0, ease: "none" })
-
-introTimeline.to("#miniplanet", { display: "block", duration: 0, ease: "none" }, "-=0.8") /// -------
-introTimeline.to("#earth_planet", { opacity: 0, display: 'none', duration: 0.5, ease: "none" },"-=0.8")
-introTimeline.to("#miniplanet", { scale: 1, duration: 1.5, ease: "power1.inOut" }, "-=0.5")
-// introTimeline.to("#miniplanet",{className:"planet zoomed-in",duration:0})
-introTimeline.set("body", { className: "sky-bg" })
-introTimeline.to(".star-background", { opacity: 0, duration: 0.5, ease: "none" }, "-=0.8")
-introTimeline.set(".star-background", { display: "none" }, "-=0")
-introTimeline.to("#planet_surface_container", { className: "visible", display: "block", duration: 0, ease: 0 }, "-=0.2")
-
-
-// var request = null;
-var scrollY = window.pageYOffset;
-var animStop = document.getElementById("scroll_extender").clientHeight;
-
-
+var scrollY,
+    animationFinished = false,
+    animTotal = introTimeline.duration(),
+    animScrollStop = document.getElementById("scroll_extender").clientHeight - window.innerHeight - 300; // stop anim 200 pixels before scroll bottom
 function scrollHandler() {
     // Grab scroll position
     scrollY = window.pageYOffset;
-
-    if (scrollY < animStop) {
-        introTimeline.seek(scrollY / animStop * 10)
-    } else {
-        if(introTimeline.progress() < 10) introTimeline.seek(10);
-        gsap.to('#planet_surface_container', 0.5, { rotation: (animStop - scrollY) / 100 })
+    console.log(animTotal)
+    if (scrollY < animScrollStop) {
+        console.log(animScrollStop)
+        introTimeline.seek(scrollY / animScrollStop * animTotal)
+        if (animationFinished == true) {
+            animationFinished = false;
+            hideCurrentModal()
+            document.body.removeEventListener("touchmove", touchMoveHandler, { passive: false })
+            document.body.onmousedown = null
+            document.body.ontouchstart = null
+            document.body.ontouchend = null;
+            document.body.ontouchcancel = null;
+            document.body.onwheel = null;
+        }
+    } else if (animationFinished == false) {
+        introTimeline.seek(animTotal); // jump to the end of the animation
+        animationFinished = true;
+        showCurrentModal()
+        document.body.addEventListener("touchmove", touchMoveHandler, { passive: false })
+        document.body.onmousedown = mouseDownHandler
+        document.body.ontouchstart = touchStartHandler
+        document.body.ontouchend = touchEndHandler;
+        document.body.ontouchcancel = touchEndHandler;
+        document.body.onwheel = scrollWheelHandler;
     }
-    // cancelAnimationFrame(request);
-    // request = requestAnimationFrame((e) => {
+} scrollHandler();
+window.onscroll = scrollHandler;
 
-    // });
+var planetRect = null
+function resizeHandler() {
+    planetRect = planetSizeContainer.getBoundingClientRect();
+    planetCenterX = planetRect.left + planetRect.width / 2
+    planetCenterY = planetRect.top + planetRect.height / 2 + (window.innerHeight * 0.3)
+}; resizeHandler();
+window.onresize = throttle(resizeHandler, 100);
+
+var pointerPostionX = null, pointerPostionY = null;
+var pointerDownPostionX = null, pointerDownPostionY = null;
+var currentPlanetAngle = 0;
+var currPointerAngle = 0;
+var lastPointerAngle = 0;
+var leftPlanetStopAngle = 0, rightPlanetStopAngle = 180;
+function calcPlanetPointerAngle() {
+    return Math.atan2(
+        pointerPostionY - planetCenterY,
+        pointerPostionX - planetCenterX
+    ) / (2 * Math.PI) * 360; // degrees conversion
+}
+function rotatePlanet(pointerDown) {
+    currPointerAngle = calcPlanetPointerAngle()
+    var adjstedPlanetAngle = currentPlanetAngle -= currPointerAngle - lastPointerAngle;
+    lastPointerAngle = currPointerAngle;
+
+    // !! assuming minPlanetAngle is near 360 deg not zero
+    if (currentPlanetAngle < leftPlanetStopAngle) {
+        if (pointerDown) adjstedPlanetAngle = leftPlanetStopAngle - Math.log10(Math.abs(currentPlanetAngle - leftPlanetStopAngle))
+        else adjstedPlanetAngle = currentPlanetAngle = leftPlanetStopAngle;
+    }
+    else if (currentPlanetAngle > rightPlanetStopAngle) { // negitive means fulther along rotation
+        if (pointerDown) adjstedPlanetAngle = rightPlanetStopAngle + Math.log10(Math.abs(currentPlanetAngle - rightPlanetStopAngle))
+        else adjstedPlanetAngle = currentPlanetAngle = rightPlanetStopAngle;
+    }
+    planetRotationHandler(adjstedPlanetAngle)
+    gsap.to('#planet_surface_container', 0.5, { rotation: -adjstedPlanetAngle })
 }
 
-
-function resizeHandler() {
-}; resizeHandler();
-
-var pointerDown = false
-var pointerPostionX = null;
-var pointerPostionY = null;
-var lastPointerPostionX = null;
-var lastPointerPostionY = null;
-function pointerMoveHandler(e) {
-    if (pointerDown) {
-        var deltaX = pointerPostionX - lastPointerPostionX;
-        var deltaY = pointerPostionY - lastPointerPostionY;
-        console.log(deltaX, deltaY)
-        if (Math.abs(deltaX) > Math.abs(deltaY)) {
-            e.preventDefault()
-            window.scrollBy(0, -deltaX);
-        }
-        lastPointerPostionX = pointerPostionX
-        lastPointerPostionY = pointerPostionY
+function mouseMoveHandler(e) {
+    pointerPostionX = e.clientX
+    pointerPostionY = e.clientY
+    var isMouseButtonDown = e.buttons === undefined ? e.which >= 1 : e.buttons >= 1;
+    if (!isMouseButtonDown) {
+        document.body.removeEventListener("mousemove", mouseMoveHandler)
+        rotatePlanet(false)
+        return false;
+    } else {
+        rotatePlanet(true)
     }
+}
+
+function mouseDownHandler(event) {
+    pointerPostionX = pointerDownPostionX = event.clientX
+    pointerPostionY = pointerDownPostionY = event.clientY
+    lastPointerAngle = calcPlanetPointerAngle()
+    document.body.addEventListener("mousemove", mouseMoveHandler)
+}
+
+var gestureType = null;
+function touchStartHandler(event) {
+    pointerPostionX = pointerDownPostionX = event.touches[0].clientX
+    pointerPostionY = pointerDownPostionY = event.touches[0].clientY
+    lastPointerAngle = calcPlanetPointerAngle()
+    gestureType = null
+}
+
+function touchMoveHandler(event) {
+    pointerPostionX = event.touches[0].clientX
+    pointerPostionY = event.touches[0].clientY
+    if (gestureType === null) {
+        if (Math.abs(pointerPostionX - pointerDownPostionX) * 1.8 < Math.abs(pointerPostionY - pointerDownPostionY)) {
+            event.preventDefault();
+            event.stopPropagation();
+            console.log(event.cancelable)
+            document.body.removeEventListener("touchmove", touchMoveHandler)
+            gestureType = 'scroll';
+            return false;
+        } else {
+            document.body.style.overflowY = 'hidden'
+            gestureType = 'rotatePlanet';
+        }
+    }
+
+    rotatePlanet(true)
 };
 
-var openModelId = null;
-window.openModal = function (event, modalId) {
-    if (modalId == openModelId) return;
-    if (openModelId == null) document.body.style.overflow = 'hidden';
-    window.closeModal(true)
-    document.getElementById(modalId).style.visibility = 'visible';
-    MicroModal.show(modalId); // [1]
-    openModelId = modalId;
-    event.stopPropagation()
-}
+function touchEndHandler(event) {
+    if (gestureType === 'scroll') document.body.addEventListener("touchmove", touchMoveHandler, { passive: false })
+    gestureType = null;
+    rotatePlanet(false)
+    console.log('pointerup');
+    document.body.style.overflowY = 'auto'
+};
 
-window.closeModal = function (modalTransition) {
-    if (openModelId) {
-        if(!modalTransition) document.body.style.overflow = 'auto';
-        MicroModal.close(openModelId);
-        var lastModalId = openModelId;
-        setTimeout(function () {
-            if (lastModalId != openModelId) document.getElementById(lastModalId).style.visibility = 'hidden';
-        }, 500)
-        openModelId = null;
+var scrollEndTimeout;
+function scrollWheelHandler(e) {
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+        currentPlanetAngle += e.deltaX * 0.01
+        rotatePlanet(true)
+        clearTimeout(scrollEndTimeout)
+        scrollEndTimeout = setTimeout(function () { rotatePlanet(false) }, 100)
     }
 }
 
-// function resizeHandler() {
-//     cx = window.innerWidth / 2;
-//     cy = window.innerHeight / 2;
-//     scrollChangeFlag = true;
-//     mouseChangeFlag = true;
-//     cancelAnimationFrame(request);
-//     request = requestAnimationFrame(update);
-// }; resizeHandler();
-
-// Bind events to window
-// window.onresize = resizeHandler;
-
-const start = () => {
-    window.scrollTop(0);
-    console.log(reset);
+// Taken from https://stackoverflow.com/questions/27078285/simple-throttle-in-js
+function throttle(callback, limit) {
+    var waiting = false;                      // Initially, we're not waiting
+    return function () {                      // We return a throttled function
+        if (!waiting) {                       // If we're not waiting
+            callback.apply(this, arguments);  // Execute users function
+            waiting = true;                   // Prevent future invocations
+            setTimeout(function () {          // After a period of time
+                waiting = false;              // And allow future invocations
+            }, limit);
+        }
+    }
 }
 
-window.onscroll = scrollHandler;
-//window.ready = start;
-scrollHandler()
-
-
-
-
-// document.addEventListener("mousedown",function (e) {
-//     lastPointerPostionX = e.clientX
-//     pointerDown = true
-// });
-// document.addEventListener("touchstart",function (e) {
-//     lastPointerPostionX = e.touches[0].clientX
-//     pointerDown = true
-// });
-// document.addEventListener("mouseup",function () {
-//     pointerDown = false
-// });
-// document.addEventListener("touchend",function () {
-//     pointerDown = false
-// });
-// document.addEventListener("mousemove",function (e) {
-//     pointerPostionX = e.clientX
-//     pointerPostionY = e.clientY
-//     pointerMoveHandler(e);
-// },{ passive: false });
-// document.addEventListener("touchmove",function (e) {
-//     // console.log(e.touches[0])
-//     e.preventDefault();
-//     pointerPostionX = e.touches[0].clientX
-//     pointerPostionY = e.touches[0].clientY
-//     pointerMoveHandler(e);
-// });
+// window.addEventListener("load", () => { scrollTo(0, 10000000) })

@@ -3,8 +3,8 @@
   z-index: 200;
   top: 0;
   right: 20px;
-  bottom: 0vh;
-  left: 0px;
+  bottom: 12px;
+  left: 12px;
 
   overflow: visible;
 
@@ -24,15 +24,16 @@
   max-width: 420px;
   max-height: 70vh;
 
+  user-select: none;
   transition-timing-function: ease;
   transition-duration: 500ms;
   transition-property: opacity, transform;
-  transform: translateY(-120%);
+  transform: translateY(120%);
 
   opacity: 0;
+  border-radius: 20px 20px 20px 0;
   border-bottom-right-radius: 20px;
   border-bottom-left-radius: 20px;
-  border-radius: 20px 20px 20px 0;
   background: white;
   box-shadow: 0 0px 28px rgba(0, 0, 0, 0.192);
 }
@@ -40,10 +41,15 @@
 .info-modal.is-open {
   display: flex;
 
-  transform: translateY(0);
+  transform: translateY(100%) translateY(-76px);
   pointer-events: all;
 
   opacity: 1;
+}
+
+.info-modal.is-open.expanded-modal {
+  // user-select: all;
+  transform: translateY(0);
 }
 
 .modal-header {
@@ -51,11 +57,10 @@
   top: 0;
   right: 0;
   left: 0;
-
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: space-between;
+  // display: flex;
+  // align-items: center;
+  // flex-direction: row;
+  // justify-content: space-between;
 
   padding: 28px 28px 18px 28px;
 
@@ -64,17 +69,19 @@
     margin-top: 0;
     margin-bottom: 0;
 
-    color: #d74510;//#00449e
+    text-align: center;
+
+    color: #d74510; //#00449e
 
     font-size: 1.25rem;
     font-weight: 600;
     line-height: 1.25;
   }
 
-  .modal-close {
+  .modal-expand {
     height: 32px;
 
-cursor: pointer;
+    cursor: pointer;
 
     border: 0;
     border-radius: 60px;
@@ -114,7 +121,7 @@ cursor: pointer;
 
   content: " ";
 
-  background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+  background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
 }
 
 /* Using SCSS variables to store breakpoints */
