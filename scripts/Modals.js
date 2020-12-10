@@ -58,11 +58,11 @@ var planetArcSections = [
     [80, 'AGS'],
     [120, 'land_use'],
     [130, 'water'],
-    [150, 'direct_uses'],
-    [150, 'direct_uses'],
-    [150, 'direct_uses'],
-    [150, 'direct_uses'],
-    [150, 'direct_uses'],
+    [150, 'alternate_uses'],
+    [160, 'costs'],
+    [170, 'jobs'],
+    [180, 'deep_egs'],
+    [190, 'new_drilling_tech'],
 ],
     maxAngle = planetArcSections[planetArcSections.length - 1][0]
 
