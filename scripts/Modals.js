@@ -4,18 +4,23 @@ MicroModal.init({
     disableFocus: true
 })
 
+var openModelId = null;
+var hintDone = false;
+var swipeHintShown = false;
 function expandModal(modalElem) {
+    if (!hintDone) { document.getElementById('modals_container').className = ""; hintDone = true; }
     document.body.style.overflowY = "hidden"
     modalElem.classList.add('expanded-modal')
 }
 
 function shrinkModal(modalElem) {
+    console.log(modalElem, planetArcSections[openModalSectionIndex])
+    if (!swipeHintShown && openModelId != null) { swipeHintShown = true; var sw = document.getElementById('swipe_hint'); if (sw) sw.style.display = 'block'; }
     document.body.style.overflowY = "scroll"
     modalElem.classList.remove('expanded-modal')
 }
 
-var openModelId = null;
-var hintDone = false;
+
 window.openModal = function (event, modalId) {
     if (modalId == openModelId) return;
 
@@ -25,10 +30,12 @@ window.openModal = function (event, modalId) {
 
     modalElem.style.visibility = 'visible';
     modalElem.onmouseenter = () => {
-        if (!hintDone) { document.getElementById('modals_container').className = ""; hintDone = true; }
+
         expandModal(modalElem)
     }
-    modalElem.onmouseleave = () => { shrinkModal(modalElem) }
+    modalElem.onmouseleave = () => {
+        shrinkModal(modalElem)
+    }
     MicroModal.show(modalId); // [1]
     openModelId = modalId;
 }
@@ -56,8 +63,8 @@ function showCurrentModal() {
 }
 
 function shrinkCurrentModal() {
-    shrinkModal(planetArcSections[openModalSectionIndex][1])
-}
+    shrinkModal(document.getElementById(planetArcSections[openModalSectionIndex][1]))
+} window.shrinkCurrentModal = shrinkCurrentModal;
 
 var openModalSectionIndex = 0
 // format  [section end degree. 'modal key']

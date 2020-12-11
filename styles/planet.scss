@@ -69,9 +69,8 @@ $planet-scale-down-factor: 0.55;
 }
 
 #earth_scale_cutaway_r {
-  display: none;
+  opacity: 0;
 }
-
 #half_circle_r {
   transform: translateX(50%);
 }

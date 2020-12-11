@@ -102,3 +102,32 @@
 
   opacity: 0.6;
 }
+
+@keyframes loading-anim {
+  0% {
+    transform: translateX(-50%) rotate(0deg);
+  }
+
+  100% {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}
+
+#loading_hint_1,
+#loading_hint_2 {
+  position: fixed;
+  z-index: 20;
+  bottom: 35vh;
+  left: 50%;
+
+  display: none;
+
+  width: 90px;
+
+  user-select: none;
+  transform: translateX(-50%);
+  animation: loading-anim 4s ease 500ms infinite both;
+  pointer-events: none;
+
+  opacity: 0.8;
+}

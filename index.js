@@ -18,7 +18,7 @@ function scrollHandler() {
         if (animationFinished == true) {
             animationFinished = false;
             hideCurrentModal()
-            document.body.removeEventListener("touchmove", touchMoveHandler, { passive: false })
+            planetSizeContainer.removeEventListener("touchmove", touchMoveHandler, { passive: false })
             document.body.onmousedown = null
             document.body.ontouchstart = null
             document.body.ontouchend = null;
@@ -29,7 +29,7 @@ function scrollHandler() {
         introTimeline.seek(animTotal); // jump to the end of the animation
         animationFinished = true;
         showCurrentModal()
-        document.body.addEventListener("touchmove", touchMoveHandler, { passive: false })
+        planetSizeContainer.addEventListener("touchmove", touchMoveHandler, { passive: false })
         document.body.onmousedown = mouseDownHandler
         document.body.ontouchstart = touchStartHandler
         document.body.ontouchend = touchEndHandler;
@@ -60,10 +60,15 @@ function calcPlanetPointerAngle() {
     ) / (2 * Math.PI) * 360; // degrees conversion
 }
 var swipeHintDone = false;
-function rotatePlanet(pointerDown, currPointerAngle) {
-
-    var adjstedPlanetAngle = currentPlanetAngle -= currPointerAngle - lastPointerAngle;
+function rotatePlanetByPointer() {
+    var currPointerAngle = calcPlanetPointerAngle();
+    var delta = currPointerAngle - lastPointerAngle;
+    rotatePlanet(true, delta)
     lastPointerAngle = currPointerAngle;
+}
+function rotatePlanet(pointerDown, deltaAngle) {
+
+    var adjstedPlanetAngle = currentPlanetAngle -= deltaAngle;
     // console.log(currentPlanetAngle)
     if (!swipeHintDone & adjstedPlanetAngle > 5) { swipeHintDone = true; document.getElementById("swipe_hint").remove() }
     // !! assuming minPlanetAngle is near 360 deg not zero
@@ -84,11 +89,11 @@ function mouseMoveHandler(e) {
     pointerPostionY = e.clientY
     var isMouseButtonDown = e.buttons === undefined ? e.which >= 1 : e.buttons >= 1;
     if (!isMouseButtonDown) {
-        document.body.removeEventListener("mousemove", mouseMoveHandler)
-        rotatePlanet(false, calcPlanetPointerAngle())
+        planetSizeContainer.removeEventListener("mousemove", mouseMoveHandler)
+        rotatePlanet(false, 0)
         return false;
     } else {
-        rotatePlanet(true, calcPlanetPointerAngle())
+        rotatePlanetByPointer()
     }
 }
 
@@ -96,7 +101,7 @@ function mouseDownHandler(event) {
     pointerPostionX = pointerDownPostionX = event.clientX
     pointerPostionY = pointerDownPostionY = event.clientY
     lastPointerAngle = calcPlanetPointerAngle()
-    document.body.addEventListener("mousemove", mouseMoveHandler)
+    planetSizeContainer.addEventListener("mousemove", mouseMoveHandler)
 }
 
 var gestureType = null;
@@ -124,11 +129,11 @@ function touchMoveHandler(event) {
         }
     }
 
-    rotatePlanet(true, calcPlanetPointerAngle())
+    rotatePlanetByPointer()
 };
 
 function touchEndHandler(event) {
-    if (gestureType === 'scroll') document.body.addEventListener("touchmove", touchMoveHandler, { passive: false })
+    if (gestureType === 'scroll') planetSizeContainer.addEventListener("touchmove", touchMoveHandler, { passive: false })
     gestureType = null;
     rotatePlanet(false, calcPlanetPointerAngle())
     document.body.style.overflowY = 'auto'
@@ -137,11 +142,9 @@ function touchEndHandler(event) {
 var scrollEndTimeout;
 function scrollWheelHandler(e) {
     if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
-        currPointerAngle = -e.deltaX * 0.01;
-        lastPointerAngle = 0;
-        rotatePlanet(true, currPointerAngle)
+        rotatePlanet(true, -e.deltaX * 0.01)
         clearTimeout(scrollEndTimeout)
-        scrollEndTimeout = setTimeout(function () { rotatePlanet(false, lastPointerAngle) }, 100)
+        scrollEndTimeout = setTimeout(function () { rotatePlanet(false, 0) }, 100)
     }
 }
 

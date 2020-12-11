@@ -35,7 +35,7 @@
                 <span class="yellow-text">millions of years.</span>
                 <br /><span class="grey-text small-text">(US Department of Energy Geovision Report Estimate)</span>
             </h3>
-            <div id="scroll_hint">
+            <div id="scroll_hint" style="display: none;">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -64,6 +64,8 @@
             NOAA, U.S. Navy, NGA, GEBCO
         </div>
         <img src="pointer.svg" id="swipe_hint" />
+        <img src="Loading_White.png" id="loading_hint_1" style="display: block;bottom:15vh" />
+        <img src="Loading.png" id="loading_hint_2" />
     </div>
     <div id="planet_size_container">
         <svg class="planet" id="miniplanet" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd"
@@ -88,8 +90,8 @@
             </defs>
         </svg>
         <div id="planet_surface_container">
-            <img src="E.jpg" class="miniplanet-drawings" loading="lazy">
-
+            <img src="E.jpg" class="miniplanet-drawings" loading="lazy"
+                onload="document.getElementById('loading_hint_2').remove()">
         </div>
 
         <svg class="planet" id="earth_planet" xmlns="http://www.w3.org/2000/svg"
@@ -98,7 +100,8 @@
             <defs />
 
             <image xlink:href="/Geo Earth Overlay Heat.png" id="earth_potential" preserveAspectRatio="xMidYMin slice"
-                width="1000" y="-20" height="600" />
+                width="1000" y="-20" height="600"
+                onload="document.getElementById('loading_hint_1').remove();document.body.style.overflowY = 'scroll'; document.getElementById('scroll_hint').style.display='block'" />
 
             <use href="#earth_scale_cutaway" id="earth_scale_cutaway_r" />
 
@@ -158,7 +161,7 @@
                 <h2>
                     Existing Geothermal
                 </h2>
-                <!-- <button class="modal-close" aria-label="Close modal" onclick="closeModal()"></button> -->
+                <button class="modal-close" aria-label="Close modal" onclick="shrinkCurrentModal()"></button>
             </header>
             <div class="modal-content">
                 <p>
@@ -192,12 +195,288 @@
                 </p>
             </div>
         </div>
+
+        <div id="egs_modal" class="info-modal" aria-hidden="true" role="dialog" aria-modal="true">
+            <header class="modal-header">
+                <h2>
+                    Enhanced Geothermal Systems
+                </h2>
+                <button class="modal-close" aria-label="Close modal" onclick="shrinkCurrentModal()"></button>
+            </header>
+            <div class="modal-content">
+                <p>
+                    Enhanced Geothermal or EGS is a new technology that can make geothermal energy widely available by
+                    creating underground reservoirs that allow water flow & heat extraction.
+                </p>
+                <ul>
+                    <li> In EGS, water is injected at high pressure into generally dry and impermeable rocks. </li>
+                    <li> The pressure causes natural rock fractures to open up in the surrounding. </li>
+                    <li> Open fractures let circulating water absorb heat from the surrounding rock making the water
+                        very hot. </li>
+                    <li> At the surface, the boiling water turns into steam which drives an electric generator and
+                        produces power. </li>
+                    <li> After the water is cooled it gets pumped down a second well to be heated again and again in a
+                        circular loop. <a href="https://www.energy.gov/eere/geothermal/enhanced-geothermal-systems-0">
+                            [~] </a> </li>
+                    <li> By not requiring highly specific geologic conditions, EGS expands the range of locations in
+                        which geothermal can be developed. <a
+                            href="https://www.energy.gov/eere/geothermal/enhanced-geothermal-systems-0"> [~] </a> </li>
+                    <li> The DOE estimates that EGS can support tens of millions of house owners and businesses. <a
+                            href="https://www.energy.gov/eere/geothermal/enhanced-geothermal-systems-0"> [~] </a> </li>
+                    <li> EGS has major benefits over other energy sources. It’s very efficient, has a long service life,
+                        and has many environmental benefits like emitting 99% less CO2 than fossil fuel-based power. <a
+                            href="https://www.nrel.gov/docs/fy04osti/36317.pdf"> [~] </a> </li>
+                    <li> Early EGS tests have been related to earthquakes in Korea. </li>
+                    <li> It’s vitally important that more research is conducted on EGS Safety & mitigation measures. We
+                        must fully understand the risks & how to avoid them so we can safely tap into the huge potential
+                        of EGS technology. </li>
+                    <li> EGS is often compared to fracking in the oil & natural gas industry, but many differences make
+                        EGS far safer and cleaner.</li>
+
+                </ul>
+
+                <h4>Why EGS is Safer than Fracking</h4>
+                <p>EGS is often compared to fracking in the oil &amp; natural gas industry, but many differences
+                    make EGS far safer and cleaner.</p>
+                <h4>Oil &amp; Gas Fracking:</h4>
+                <ol style="margin-top:0;margin-bottom:0;padding-inline-start:48px;">
+                    <li>Uses
+                        a pressurized mixture of water and chemicals to crack deep rock and extract oil
+                        &amp; gas.&nbsp;
+                    </li>
+                    <li>Fracking
+                        mixtures sometimes contaminate local groundwater. <a
+                            href="https://www.nationalgeographic.com/news/energy/2015/07/150723-fracking-questions-answered/">
+                            [~]</a>
+
+                    </li>
+                    <li>Residents
+                        in some towns near fracking wells can light their tap water on fire from
+                        dissolved natural gas as a result of fracking. <a
+                            href="https://www.propublica.org/article/scientific-study-links-flammable-drinking-water-to-fracking">
+                            [~]</a>
+
+                    </li>
+
+                    <li>Several
+                        tons of this mixture is injected at pressure each day to create more cracks and
+                        extract more oil &amp; gas - A typical well can use between 2 million to 7 million
+                        gallons of water over the course of its lifetime. <a
+                            href="https://www.vox.com/2014/4/14/18076690/fracking">[~]</a>
+
+                    </li>
+                    <li>This
+                        process &amp; the accompanying wastewater re-injection steps are known to cause
+                        earthquakes in regions that had previously never experienced them. <a
+                            href="https://www.nationalgeographic.com/news/energy/2015/07/150723-fracking-questions-answered/">[~]</a>
+
+                    </li>
+                </ol>
+                <h4>
+                    EGS:
+                </h4>
+                <ol>
+                    <li>EGS
+                        Uses water with fewer chemicals or plain water alone to form cracks very deep
+                        underground.
+                    </li>
+                    <li>Once
+                        cracks are formed, no more water is needed &amp; the plant operates on a stable
+                        water loop at constant pressure.
+                    </li>
+                    <li>The
+                        stable pressure of the loop reduces earthquake risk.
+                    </li>
+                </ol>
+                <h4>
+                    EGS Risks:
+                </h4>
+                <ol>
+                    <li>No
+                        new technology is without its risks, including EGS.&nbsp;
+                    </li>
+                    <li>Early
+                        EGS tests have been related to earthquakes in Korea and Switzerland. <a
+                            href="https://yaleclimateconnections.org/2020/02/the-pros-and-cons-of-enhanced-geothermal-energy-systems/">[~]</a>
+                    </li>
+                    <li>It’s
+                        vitally important that more research is conducted on EGS Safety &amp; mitigation
+                        measures. We must fully understand the risks &amp; how to avoid them so we can
+                        safely tap into the huge potential of EGS technology.
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div id="zero_co2_polution" class="info-modal" aria-hidden="true" role="dialog" aria-modal="true">
+            <header class="modal-header">
+                <h2>
+                    CO2 & Polution Free
+                </h2>
+                <button class="modal-close" aria-label="Close modal" onclick="shrinkCurrentModal()"></button>
+            </header>
+            <div class="modal-content">
+                <p>
+                    Modern geothermal technology like EGS & AGS use closed-loop systems that emit almost no greenhouse
+                    gasses or pollutants.
+                <ul>
+                    <li>Greenhouse gasses like Co2 & Methane (the main component of natural gas) rise into the
+                        atmosphere when we use fossil fuels. These gasses form an atmospheric “blanket” that causes our
+                        planet to slowly heat up. <a href="https://climate.nasa.gov/causes/">[~]</a> </li>
+                    <li>The more gasses we emit, the more this process accelerates. The effects of this are becoming
+                        very clear with the record breaking wildfires in the western US & intensifying storms & flooding
+                        in the east. <a href="https://climate.nasa.gov/effects/">[~]</a> </li>
+                    <li>Geothermal is poised to play a key role in reducing CO2 as well as smog & pollutants that come
+                        from burning fossil fuels which cause an estimated 3.6 million deaths worldwide every year -
+                        mostly from respiratory complications. <a
+                            href="https://www.forbes.com/sites/rogerpielke/2020/03/10/every-day-10000-people-die-due-to-air-pollution-from-fossil-fuels/">[~]</a>
+                    </li>
+                    <li>Each year, U.S. geothermal electricity offsets the emission of 4.1 million tons of CO2, 80
+                        thousand tons of nitrogen oxides, and 110 thousand tons of particulate matter that could have
+                        been
+                        released by coal-powered plants. <a
+                            href="https://www.energy.gov/eere/geothermal/geothermal-power-plants-meeting-clean-air-standards">[~]</a>
+                    </li>
+                    <li>Better still, scientists have found that geothermal systems can be used to store captured Co2
+                        within minerals deep underground <a
+                            href="https://www.brgm.eu/project/successfully-combining-co2-storage-geothermal-heat-extraction">[~]</a>.
+                        They found that using CO2 in geothermal plants can actually make power production more
+                        efficient. <a
+                            href="https://www.energy.gov/sites/prod/files/2019/06/f63/GeoVision-full-report-opt.pdf">[~]</a>
+                    </li>
+                </ul>
+                </p>
+            </div>
+        </div>
+
+        <div id="rain_or_shine" class="info-modal" aria-hidden="true" role="dialog" aria-modal="true">
+            <header class="modal-header">
+                <h2>
+                    Rain or Shine
+                </h2>
+                <button class="modal-close" aria-label="Close modal" onclick="shrinkCurrentModal()"></button>
+            </header>
+            <div class="modal-content">
+                <p>
+                    Rain or shine, still or stormy, Geothermal keeps providing stable, clean power 24/7, 365 days a
+                    year.
+                <ul>
+                    <li>Many renewables can’t provide power in certain conditions like solar at night & wind on a calm
+                        summer's day. This inconsistent output is possibly the single biggest issue preventing full use
+                        of renewables. </li>
+                    <li>Inconsistency is an issue geothermal doesn’t have; making it one of the most reliable sources of
+                        sustainable energy. </li>
+                    <li>Geothermal can also solve demand spikes - for example when everyone flicks on the lights at
+                        sunset. </li>
+                    <li>Today, that spike in electricity is met by firing up highly inefficient & polluting gas-fired
+                        “peaker” plants, so everyone’s lights don’t flicker. <a
+                            href="https://www.wired.com/story/the-drive-to-replace-summer-only-peaker-power-plants/">
+                            [~] </a> </li>
+                    <li>Geothermal solves this by using the earth as a heat battery. By reducing the flow rate through a
+                        well, a geothermal plant can let extra heat build up in surrounding rock. When electricity
+                        demand spikes, the geothermal plant can let the wells flow at full capacity converting the extra
+                        stored heat directly into a surge of power to meet demand. </li>
+                </ul>
+
+                </p>
+            </div>
+        </div>
+
+
+        <div id="AGS" class="info-modal" aria-hidden="true" role="dialog" aria-modal="true">
+            <header class="modal-header">
+                <h2>
+                    Advanced Geothermal Systems
+                </h2>
+                <button class="modal-close" aria-label="Close modal" onclick="shrinkCurrentModal()"></button>
+            </header>
+            <div class="modal-content">
+                <p>
+
+                    Advanced Geothermal Systems or AGS bring many of the advantages of EGS but don’t need high-pressure
+                    fracturing to allow water flow.
+                <ul>
+
+                    <li> AGS technologies use precision drilling to cut underground “U” shaped wells several Kilometers
+                        on each side. </li>
+                    <li> These wells function like a reverse radiator, pulling heat from the surrounding rock into a
+                        water solution circulating through the sealed well. </li>
+                    <li> If designed right, AGS wells need no pumps because the thermosyphon effect works to circulate
+                        the water from heat alone. </li>
+                    <li> Because AGS has less surface area where water contacts the hot rock, AGS is better suited for
+                        locations with lower power demand like small towns </li>
+                    <li> AGS technology is often combined with binary power generation. Binary generators transfer the
+                        heat energy to a fluid with a lower boiling point than water, making them excellent for
+                        converting lower temperature wells to electricity. </li>
+                    <li> Binary generators can also be used alongside regular turbines in both AGS & EGS to increase
+                        efficiency </li>
+                </ul>
+
+                </p>
+            </div>
+        </div>
+
+
+        <div id="land_use" class="info-modal" aria-hidden="true" role="dialog" aria-modal="true">
+            <header class="modal-header">
+                <h2>
+                    Land Use
+                </h2>
+                <button class="modal-close" aria-label="Close modal" onclick="shrinkCurrentModal()"></button>
+            </header>
+            <div class="modal-content">
+                <p>
+                    Geothermal energy has the smallest land footprint of any comparable energy source in the world.
+                <ul>
+                    <li> Geothermal uses 8x less land than solar, 3x less than wind, and 9x less land than coal per
+                        gigawatt-hour on average. <a
+                            href="https://www.energy.gov/eere/articles/5-common-geothermal-energy-myths-debunked">[~]</a>
+                    </li>
+                    <li> This means geothermal results in less deforestation & frees up land for recreation, farms, &
+                        towns. </li>
+                    <li> Some companies are designing small modular geothermal stations that can power remote towns
+                        using a system that fits in a couple of shipping containers. Several small geothermal stations
+                        have already been successfully deployed in Alaska. <a
+                            href="https://www.popularmechanics.com/science/green-tech/a2540/4245896/">[~]</a> </li>
+                </ul>
+                </p>
+            </div>
+        </div>
+        <div id="water" class="info-modal" aria-hidden="true" role="dialog" aria-modal="true">
+            <header class="modal-header">
+                <h2>
+                    Water Use
+                </h2>
+                <button class="modal-close" aria-label="Close modal" onclick="shrinkCurrentModal()"></button>
+            </header>
+            <div class="modal-content">
+                <p>
+                    Like all energy sources, geothermal takes water to build & run.
+                <ul>
+                    <li> Geothermal can use much more water in construction & operation than other renewables and far
+                        less than every kind of fossil fuel. </li>
+                    <li> In areas where water is plentiful, geothermal plants can take advantage of the increased
+                        efficiency of water cooling. </li>
+                    <li> In drier locals, air-cooled binary geothermal power plants use little to no water in operation
+                        & can generate electricity from much lower temperatures. </li>
+                    <li> Technologies like Enhanced geothermal do use a sizable amount of water in the reservoir
+                        formation step, but still far less than fossil fuel extraction including fracking for natural
+                        gas & oil. </li>
+                    <li> In EGS reservoir formation, plain water is pumped into the wells. Any available source of water
+                        works, so drinking water supplies can be avoided as long as regulatory checks are put in place.
+                    </li>
+                </ul>
+
+                </p>
+            </div>
+        </div>
+
         <div id="gshp_modal" class="info-modal" aria-hidden="true" role="dialog" aria-modal="true">
             <header class="modal-header">
                 <h2>
                     Ground Source Heat Pumps
                 </h2>
-                <!-- <button class="modal-close" aria-label="Close modal" onclick="closeModal()"></button> -->
+                <button class="modal-close" aria-label="Close modal" onclick="shrinkCurrentModal()"></button>
             </header>
             <div class="modal-content">
                 <p>
@@ -227,211 +506,12 @@
             </div>
         </div>
 
-        <div id="egs_modal" class="info-modal" aria-hidden="true" role="dialog" aria-modal="true">
-            <header class="modal-header">
-                <h2>
-                    Enhanced Geothermal Systems
-                </h2>
-                <!-- <button class="modal-close" aria-label="Close modal" onclick="closeModal()"></button> -->
-            </header>
-            <div class="modal-content">
-                <p>
-                    Enhanced Geothermal or EGS is a new technology that can make geothermal energy widely available by
-                    creating underground reservoirs that allow water flow & heat extraction.
-                <ul>
-                    <li> In EGS, water is injected at high pressure into generally dry and impermeable rocks. </li>
-                    <li> The pressure causes natural rock fractures to open up in the surrounding. </li>
-                    <li> Open fractures let circulating water absorb heat from the surrounding rock making the water
-                        very hot. </li>
-                    <li> At the surface, the boiling water turns into steam which drives an electric generator and
-                        produces power. </li>
-                    <li> After the water is cooled it gets pumped down a second well to be heated again and again in a
-                        circular loop. <a href="https://www.energy.gov/eere/geothermal/enhanced-geothermal-systems-0">
-                            [~] </a> </li>
-                    <li> By not requiring highly specific geologic conditions, EGS expands the range of locations in
-                        which geothermal can be developed. <a
-                            href="https://www.energy.gov/eere/geothermal/enhanced-geothermal-systems-0"> [~] </a> </li>
-                    <li> The DOE estimates that EGS can support tens of millions of house owners and businesses. <a
-                            href="https://www.energy.gov/eere/geothermal/enhanced-geothermal-systems-0"> [~] </a> </li>
-                    <li> EGS has major benefits over other energy sources. It’s very efficient, has a long service life,
-                        and has many environmental benefits like emitting 99% less CO2 than fossil fuel-based power. <a
-                            href="https://www.nrel.gov/docs/fy04osti/36317.pdf"> [~] </a> </li>
-                    <li> Early EGS tests have been related to earthquakes in Korea. </li>
-                    <li> It’s vitally important that more research is conducted on EGS Safety & mitigation measures. We
-                        must fully understand the risks & how to avoid them so we can safely tap into the huge potential
-                        of EGS technology. </li>
-                    <li> EGS is often compared to fracking in the oil & natural gas industry, but many differences make
-                        EGS far safer and cleaner.</li>
-
-                </ul>
-                </p>
-            </div>
-        </div>
-        <div id="zero_co2_polution" class="info-modal" aria-hidden="true" role="dialog" aria-modal="true">
-            <header class="modal-header">
-                <h2>
-                    CO2 & Polution Free
-                </h2>
-                <!-- <button class="modal-close" aria-label="Close modal" onclick="closeModal()"></button> -->
-            </header>
-            <div class="modal-content">
-                <p>
-                    Modern geothermal technology like EGS & AGS use closed-loop systems that emit almost no greenhouse
-                    gasses or pollutants.
-                <ul>
-                    <li>Greenhouse gasses like Co2 & Methane (the main component of natural gas) rise into the
-                        atmosphere when we use fossil fuels. These gasses form an atmospheric “blanket” that causes our
-                        planet to slowly heat up. <a href="https://climate.nasa.gov/causes/">[~]</a> </li>
-                    <li>The more gasses we emit, the more this process accelerates. The effects of this are becoming
-                        very clear with the record breaking wildfires in the western US & intensifying storms & flooding
-                        in the east. <a href="https://climate.nasa.gov/effects/">[~]</a> </li>
-                    <li>Geothermal is poised to play a key role in reducing CO2 as well as smog & pollutants that come
-                        from burning fossil fuels which cause an estimated 3.6 million deaths worldwide every year -
-                        mostly from respiratory complications. <a
-                            href="https://www.forbes.com/sites/rogerpielke/2020/03/10/every-day-10000-people-die-due-to-air-pollution-from-fossil-fuels/">[~]</a>
-                    </li>
-                    <li>Each year, U.S. geothermal electricity offsets the emission of 4.1 million tons of CO2, 80
-                        thousand tons of nitrogen oxides, and 110 thousand tons of particulate matter that was not
-                        released by coal-powered plants. <a
-                            href="https://www.energy.gov/eere/geothermal/geothermal-power-plants-meeting-clean-air-standards">[~]</a>
-                    </li>
-                    <li>Better still, scientists have found that geothermal systems can be used to store captured Co2
-                        within minerals deep underground <a
-                            href="https://www.brgm.eu/project/successfully-combining-co2-storage-geothermal-heat-extraction">[~]</a>.
-                        They found that using CO2 in geothermal plants can actually make power production more
-                        efficient. <a
-                            href="https://www.energy.gov/sites/prod/files/2019/06/f63/GeoVision-full-report-opt.pdf">[~]</a>
-                    </li>
-                </ul>
-                </p>
-            </div>
-        </div>
-
-        <div id="rain_or_shine" class="info-modal" aria-hidden="true" role="dialog" aria-modal="true">
-            <header class="modal-header">
-                <h2>
-                    Rain or Shine
-                </h2>
-                <!-- <button class="modal-close" aria-label="Close modal" onclick="closeModal()"></button> -->
-            </header>
-            <div class="modal-content">
-                <p>
-                    Rain or shine, still or stormy, Geothermal keeps providing stable, clean power 24/7, 365 days a
-                    year.
-                <ul>
-                    <li>Many renewables can’t provide power in certain conditions like solar at night & wind on a calm
-                        summer's day. This inconsistent output is possibly the single biggest issue preventing full use
-                        of renewables. </li>
-                    <li>Inconsistency is an issue geothermal doesn’t have; making it one of the most reliable sources of
-                        sustainable energy. </li>
-                    <li>Geothermal can also solve demand spikes - for example when everyone flicks on the lights at
-                        sunset. </li>
-                    <li>Today, that spike in electricity is met by firing up highly inefficient & polluting gas-fired
-                        “peaker” plants, so everyone’s lights don’t flicker. <a href=" "> [~] </a> </li>
-                    <li>Geothermal solves this by using the earth as a heat battery. By reducing the flow rate through a
-                        well, a geothermal plant can let extra heat build up in surrounding rock. When electricity
-                        demand spikes, the geothermal plant can let the wells flow at full capacity converting the extra
-                        stored heat directly into a surge of power to meet demand. </li>
-                </ul>
-
-                </p>
-            </div>
-        </div>
-
-
-        <div id="AGS" class="info-modal" aria-hidden="true" role="dialog" aria-modal="true">
-            <header class="modal-header">
-                <h2>
-                    AGS
-                </h2>
-                <!-- <button class="modal-close" aria-label="Close modal" onclick="closeModal()"></button> -->
-            </header>
-            <div class="modal-content">
-                <p>
-
-                    AGS or Advanced Geothermal Systems bring many of the advantages of EGS but don’t need high-pressure
-                    fracturing to allow water flow.
-                <ul>
-
-                    <li> AGS technologies use precision drilling to cut underground “U” shaped wells several Kilometers
-                        on each side. </li>
-                    <li> These wells function like a reverse radiator, pulling heat from the surrounding rock into a
-                        water solution circulating through the sealed well. </li>
-                    <li> If designed right, AGS wells need no pumps because the thermosyphon effect works to circulate
-                        the water from heat alone. </li>
-                    <li> Because AGS has less surface area where water contacts the hot rock, AGS is better suited for
-                        locations with lower power demand like small towns </li>
-                    <li> AGS technology is often combined with binary power generation. Binary generators transfer the
-                        heat energy to a fluid with a lower boiling point than water, making them excellent for
-                        converting lower temperature wells to electricity. </li>
-                    <li> Binary generators can also be used alongside regular turbines in both AGS & EGS to increase
-                        efficiency </li>
-                </ul>
-
-                </p>
-            </div>
-        </div>
-
-
-        <div id="land_use" class="info-modal" aria-hidden="true" role="dialog" aria-modal="true">
-            <header class="modal-header">
-                <h2>
-                    Land Use
-                </h2>
-                <!-- <button class="modal-close" aria-label="Close modal" onclick="closeModal()"></button> -->
-            </header>
-            <div class="modal-content">
-                <p>
-                    Geothermal energy has the smallest land footprint of any comparable energy source in the world.
-                <ul>
-                    <li> Geothermal uses 8x less land than solar, 3x less than wind, and 9x less land than coal per
-                        gigawatt-hour on average. <a
-                            href="https://www.energy.gov/eere/articles/5-common-geothermal-energy-myths-debunked">[~]</a>
-                    </li>
-                    <li> This means geothermal results in less deforestation & frees up land for recreation, farms, &
-                        towns. </li>
-                    <li> Some companies are designing small modular geothermal stations that can power remote towns
-                        using a system that fits in a couple of shipping containers. Several small geothermal stations
-                        have already been successfully deployed in Alaska. <a
-                            href="https://www.popularmechanics.com/science/green-tech/a2540/4245896/">[~]</a> </li>
-                </ul>
-                </p>
-            </div>
-        </div>
-        <div id="water" class="info-modal" aria-hidden="true" role="dialog" aria-modal="true">
-            <header class="modal-header">
-                <h2>
-                    Water Use
-                </h2>
-                <!-- <button class="modal-close" aria-label="Close modal" onclick="closeModal()"></button> -->
-            </header>
-            <div class="modal-content">
-                <p>
-                    Like all energy sources, geothermal takes water to build & run.
-                <ul>
-                    <li> Geothermal can use much more water in construction & operation than other renewables and far
-                        less than every kind of fossil fuel. </li>
-                    <li> In areas where water is plentiful, geothermal plants can take advantage of the increased
-                        efficiency of water cooling. </li>
-                    <li> In drier locals, air-cooled binary geothermal power plants use little to no water in operation
-                        & can generate electricity from much lower temperatures. </li>
-                    <li> Technologies like Enhanced geothermal do use a sizable amount of water in the reservoir
-                        formation step, but still far less than fossil fuel extraction including fracking for natural
-                        gas & oil. </li>
-                    <li> In EGS reservoir formation, plain water is pumped into the wells. Any available source of water
-                        works, so drinking water supplies can be avoided as long as regulatory checks are put in place.
-                    </li>
-                </ul>
-
-                </p>
-            </div>
-        </div>
         <div id="alternate_uses" class="info-modal" aria-hidden="true" role="dialog" aria-modal="true">
             <header class="modal-header">
                 <h2>
                     Direct Uses
                 </h2>
-                <!-- <button class="modal-close" aria-label="Close modal" onclick="closeModal()"></button> -->
+                <button class="modal-close" aria-label="Close modal" onclick="shrinkCurrentModal()"></button>
             </header>
             <div class="modal-content">
                 <p>
@@ -463,46 +543,13 @@
         </div>
 
 
-        <div id="new_drilling_tech" class="info-modal" aria-hidden="true" role="dialog" aria-modal="true">
-            <header class="modal-header">
-                <h2>
-                    New Drilling technologies
-                </h2>
-                <!-- <button class="modal-close" aria-label="Close modal" onclick="closeModal()"></button> -->
-            </header>
-            <div class="modal-content">
-                <p>
-                    The DOE, industry and others are making huge strides in developing better & cheaper drilling
-                    technology.
-                <ul>
-                    <li> Hydrothermal Spallation Drilling (HSD) is a new form of drilling for hard and brittle rocks.
-                        HSD can reduce costs by 15-20% by rapid heating of rock surfaces which allows for the expansion
-                        of solid rock under stress. <a
-                            href="https://www.atlantis-press.com/proceedings/eame-17/25875814">[~]</a>
-                    <li>
-                    <li> Hypersonic drilling is another new drilling technology that can be integrated into current
-                        drilling systems to greatly increase drilling speed & reduce costs. <a
-                            href="https://www.hypersciences.com/applications/#geothermal-drilling">[~]</a>
-                    <li>
-                    <li> Hypersonic systems use hypersonic projectiles that break up the rock ahead of the drill bit
-                        with 100x times the strength of the rock they’re clearing.
-                    <li>
-                    <li> The Department of Energy ARPA-E program has recently funded a company developing a drilling
-                        technology that melts the rock away with millimeter-wave lasers, which also promises to greatly
-                        reduce drilling costs. <a
-                            href="https://spectrum.ieee.org/energy/renewables/altarock-energy-melts-rock-with-millimeter-waves-for-geothermal-wells">[~]</a>
-                    <li>
-                </ul>
-                </p>
-            </div>
-        </div>
 
         <div id="jobs" class="info-modal" aria-hidden="true" role="dialog" aria-modal="true">
             <header class="modal-header">
                 <h2>
                     Jobs
                 </h2>
-                <!-- <button class="modal-close" aria-label="Close modal" onclick="closeModal()"></button> -->
+                <button class="modal-close" aria-label="Close modal" onclick="shrinkCurrentModal()"></button>
             </header>
             <div class="modal-content">
                 <p>
@@ -535,11 +582,12 @@
                 <h2>
                     Deep EGS
                 </h2>
-                <!-- <button class="modal-close" aria-label="Close modal" onclick="closeModal()"></button> -->
+                <button class="modal-close" aria-label="Close modal" onclick="shrinkCurrentModal()"></button>
             </header>
             <div class="modal-content">
                 <p>
-
+                    Deep EGS is the final frontier of geothermal power. Deep EGS wells can go to depths past 5, 7 or
+                    even 9 km to generate heat and electricity anywhere efficiently.
                 <ul>
                     <li> Below 7-10 km in the earth’s crust, temperatures are hot enough to produce electricity nearly
                         anywhere. <a
@@ -559,20 +607,52 @@
                         at the bottom will be sufficient. </li>
                     <li> If a breakthrough in low-cost drilling arrives, Deep EGS will lead to a new era of geothermal
                         usage by utilizing hotter reservoirs at greater depths. </li>
-                    <li> With technological improvements, deep EGS could be powering 57% of all US electricity
-                        generation by 2050. </li>
+                    <li> With technological improvements, deep EGS could be powering 57% of all renewable US electricity
+                        generation by 2050. <a
+                            href="https://www.energy.gov/sites/prod/files/2019/06/f63/GeoVision-full-report-opt.pdf">[~]
+                        </a></li>
 
                 </ul>
                 </p>
+                <h2>
+                    New Drilling technologies
+                </h2>
+                <p>
+                    The DOE, industry and others are making huge strides in developing better & cheaper drilling
+                    technology.
+                <ul>
+                    <li> Hydrothermal Spallation Drilling (HSD) is a new form of drilling for hard and brittle rocks.
+                        HSD can reduce costs by 15-20% by rapid heating of rock surfaces which allows for the expansion
+                        of solid rock under stress. <a
+                            href="https://www.atlantis-press.com/proceedings/eame-17/25875814">[~]</a>
+                    </li>
+                    <li> Hypersonic drilling is another new drilling technology that can be integrated into current
+                        drilling systems to greatly increase drilling speed & reduce costs. <a
+                            href="https://www.hypersciences.com/applications/#geothermal-drilling">[~]</a>
+                    </li>
+                    <li> Hypersonic systems use hypersonic projectiles that break up the rock ahead of the drill bit
+                        with 100x times the strength of the rock they’re clearing.
+                    </li>
+                    <li> The Department of Energy ARPA-E program has recently funded a company developing a drilling
+                        technology that melts the rock away with millimeter-wave lasers. Their technology also promises
+                        to greatly
+                        reduce drilling costs. <a
+                            href="https://spectrum.ieee.org/energy/renewables/altarock-energy-melts-rock-with-millimeter-waves-for-geothermal-wells">[~]</a>
+                    </li>
+                </ul>
+                </p>
+
             </div>
         </div>
+
+
 
         <div id="costs" class="info-modal" aria-hidden="true" role="dialog" aria-modal="true">
             <header class="modal-header">
                 <h2>
                     Costs
                 </h2>
-                <!-- <button class="modal-close" aria-label="Close modal" onclick="closeModal()"></button> -->
+                <button class="modal-close" aria-label="Close modal" onclick="shrinkCurrentModal()"></button>
             </header>
             <div class="modal-content">
                 <p>
@@ -600,16 +680,14 @@
         </div>
 
 
-        <div id="barrier_to_progress" class="info-modal stacked-modal" aria-hidden="true" role="dialog"
-            aria-modal="true">
+        <div id="barrier_to_progress" class="info-modal" aria-hidden="true" role="dialog" aria-modal="true">
             <header class="modal-header">
                 <h2>
                     Barriers To Progress
                 </h2>
-                <!-- <button class="modal-close" aria-label="Close modal" onclick="closeModal()"></button> -->
+                <button class="modal-close" aria-label="Close modal" onclick="shrinkCurrentModal()"></button>
             </header>
             <div class="modal-content">
-                <p>
                 <ul>
                     <li> <em>Regulatory & Permitting time</em> - The Department of Energy estimates that regulatory
                         streamlining
@@ -632,21 +710,10 @@
                         geothermal, hydropower, wind, solar & nuclear. More people need to know about geothermal
                         potential, but it’s not a silver bullet, not yet at least. </li>
                 </ul>
-                </p>
-            </div>
-            <div id="what_you_can_do" class="info-modal sub-modal" aria-hidden="true" role="dialog" aria-modal="true">
-                <header class="modal-header">
-                    <h2>
+
+                <!-- <h2>
                         What You Can Do
-                    </h2>
-                    <!-- <button class="modal-close" aria-label="Close modal" onclick="closeModal()"></button> -->
-                </header>
-                <div class="modal-content">
-                    <p>
-
-
-                    </p>
-                </div>
+                    </h2> -->
             </div>
         </div>
 

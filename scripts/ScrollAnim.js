@@ -20,7 +20,7 @@ introTimeline.to("#intro_title,#intro_text_1", { display: "none", duration: 0, e
 introTimeline.set("#scale_bar,#imagery_credit", { display: "none" }, "-=1")
 introTimeline.set("#not_to_scale", { display: "block" })
 // Earth cuttaway transition:
-introTimeline.to("#earth_scale_cutaway_r", { display: "inline", duration: 0, ease: "none" }, "-=1.5") /// -----
+introTimeline.to("#earth_scale_cutaway_r", { opacity: 1, duration: 0.5, }, "-=1.5") /// -----
 introTimeline.set("#half_circle_r_clip_path", { scaleX: 1 }, "-=1.5")
 introTimeline.to("#half_circle_r_clip_path", { scaleX: 0, duration: 0.5, ease: "power1.in" }, "-=1.5")
 introTimeline.set("#earth_powerstations_r", { display: "none" }, "-=1")/// -----
@@ -38,6 +38,7 @@ introTimeline.set("body", { className: "sky-bg" })
 introTimeline.to(".star-background", { opacity: 0, duration: 0.5, ease: "none" }, "-=0.8")
 introTimeline.set(".star-background", { display: "none" }, "-=0")
 introTimeline.set("#planet_surface_container", { className: "visible" })
-introTimeline.set("#swipe_hint", { display: "block" })
+introTimeline.set("#loading_hint_2", { display: "block" })
+introTimeline.set("#swipe_hint", { display: "none" })
 introTimeline.pause()
 export { introTimeline };

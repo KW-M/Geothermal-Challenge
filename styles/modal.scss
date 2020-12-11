@@ -3,8 +3,8 @@
   z-index: 200;
   top: 0;
   right: 20px;
-  bottom: 12px;
-  left: 12px;
+  bottom: 0;
+  left: 0;
 
   overflow: visible;
 
@@ -16,16 +16,16 @@
   bottom: 0;
 
   display: flex;
-  overflow: visible;
+  overflow: hidden;
   flex-direction: column;
 
   box-sizing: border-box;
   width: 100%;
-  max-width: 420px;
+  max-width: 520px;
   max-height: 100%;
   max-height: min(600px, 100%);
+  margin: 12px;
 
-  user-select: none;
   transition-timing-function: ease;
   transition-duration: 500ms;
   transition-property: opacity, transform;
@@ -37,6 +37,34 @@
   border-bottom-left-radius: 20px;
   background: white;
   box-shadow: 0 0px 28px rgba(0, 0, 0, 0.192);
+}
+
+.modal-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+  display: none;
+
+  width: 32px;
+  height: 32px;
+
+  cursor: pointer;
+
+  border: 0;
+  border-radius: 60px;
+  background: transparent;
+
+  font-size: 20px;
+}
+.modal-close:hover,
+.modal-close:focus,
+.modal-close:active {
+  outline: none;
+  background: #d7451033;
+}
+.modal-close:before {
+  content: "\2715";
 }
 
 .info-modal.stacked-modal.is-open {
@@ -88,6 +116,9 @@
 .info-modal.is-open.expanded-modal {
   // user-select: all;
   transform: translateY(0);
+  .modal-close {
+    display: block;
+  }
 }
 
 .modal-header {
@@ -116,26 +147,26 @@
     line-height: 1.25;
   }
 
-  .modal-expand {
-    height: 32px;
+  // .modal-expand {
+  //   height: 32px;
 
-    cursor: pointer;
+  //   cursor: pointer;
 
-    border: 0;
-    border-radius: 60px;
-    background: transparent;
+  //   border: 0;
+  //   border-radius: 60px;
+  //   background: transparent;
 
-    font-size: 20px;
-  }
-  .modal-close:hover,
-  .modal-close:focus,
-  .modal-close:active {
-    outline: none;
-    background: #d7451033;
-  }
-  .modal-close:before {
-    content: "\2715";
-  }
+  //   font-size: 20px;
+  // }
+  // .modal-close:hover,
+  // .modal-close:focus,
+  // .modal-close:active {
+  //   outline: none;
+  //   background: #d7451033;
+  // }
+  // .modal-close:before {
+  //   content: "\2715";
+  // }
 }
 .modal-content {
   overflow-y: auto;
@@ -177,6 +208,7 @@ $breakpoint-tablet: 768px;
 
     max-width: unset;
     max-height: 70vh;
+    margin: 0;
     // padding: 0 20px;
 
     transform: translateY(120%);
