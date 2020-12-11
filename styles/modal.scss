@@ -1,4 +1,4 @@
-.modals-container {
+#modals_container {
   position: fixed;
   z-index: 200;
   top: 0;
@@ -16,7 +16,7 @@
   bottom: 0;
 
   display: flex;
-  overflow: hidden;
+  overflow: visible;
   flex-direction: column;
 
   box-sizing: border-box;
@@ -39,10 +39,47 @@
   box-shadow: 0 0px 28px rgba(0, 0, 0, 0.192);
 }
 
+.info-modal.stacked-modal.is-open {
+  transform: translateY(100%) translateY(-140px);
+}
+
+.info-modal.stacked-modal.is-open.expanded-modal {
+  transform: translateY(-80px);
+  .sub-modal {
+    transform: translateY(580px);
+  }
+  .sub-modal:hover {
+    transform: translateY(-100%);
+  }
+}
+
+.info-modal.sub-modal {
+  top: 0;
+  bottom: unset;
+
+  transform: translateY(70px);
+
+  opacity: 1;
+}
+
+@keyframes jumping {
+  0% {
+    transform: translateY(100%) translateY(-72px);
+  }
+  50% {
+    transform: translateY(100%) translateY(-50px);
+  }
+}
+
+.jumping .info-modal.is-open {
+  transform: translateY(100%) translateY(-60px);
+  animation: jumping 2s ease-in-out 1s infinite;
+}
+
 .info-modal.is-open {
   display: flex;
 
-  transform: translateY(100%) translateY(-76px);
+  transform: translateY(100%) translateY(-60px);
   pointer-events: all;
 
   opacity: 1;
@@ -128,7 +165,7 @@
 /* Using SCSS variables to store breakpoints */
 $breakpoint-tablet: 768px;
 @media (max-width: $breakpoint-tablet) {
-  .modals-container {
+  #modals_container {
     top: 0;
     right: 0;
     bottom: 0;

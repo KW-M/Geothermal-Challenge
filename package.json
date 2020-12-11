@@ -5,7 +5,8 @@
   "repository": "",
   "main": "index.js",
   "scripts": {
-    "watch": "parcel index.html"
+    "watch": "parcel index.html",
+    "build": "parcel build index.html"
   },
   "author": "Kyle Worcester-Moore, Krishna Kumar Pandian, & Ryan Anderson",
   "license": "MIT",

@@ -47,6 +47,36 @@
   font-weight: normal;
 }
 
+.lower-text {
+  padding: 2px 4px;
+
+  user-select: none;
+  pointer-events: none;
+
+  color: white;
+  background: rgba(0, 0, 0, 0.329);
+
+  font-size: 0.8em;
+}
+
+.bottom-left {
+  position: fixed;
+  z-index: 20;
+  bottom: 0;
+  left: 0;
+
+  border-top-right-radius: 5px;
+}
+
+.bottom-right {
+  position: fixed;
+  z-index: 20;
+  right: 0;
+  bottom: 0;
+
+  border-top-left-radius: 5px;
+}
+
 .intro-text {
   position: absolute;
   z-index: 5;

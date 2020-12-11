@@ -71,3 +71,34 @@
 
   border-radius: 30px 30px 0 0;
 }
+
+@keyframes swipe-anim {
+  0% {
+    transform: rotate(-3deg);
+  }
+
+  30% {
+    transform: rotate(3deg);
+  }
+
+  100% {
+    transform: rotate(-3deg);
+  }
+}
+
+#swipe_hint {
+  position: fixed;
+  z-index: 20;
+  bottom: 20vh;
+  left: 50%;
+
+  display: none;
+
+  width: 90px;
+
+  transform-origin: center 1000%;
+  animation: swipe-anim 4s ease 500ms infinite both;
+  pointer-events: none;
+
+  opacity: 0.6;
+}

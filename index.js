@@ -1,7 +1,7 @@
 // Green Sock Animation
 import gsap from "gsap";
 import { introTimeline } from './scripts/ScrollAnim'
-import { planetRotationHandler, showCurrentModal, hideCurrentModal } from './scripts/Modals'
+import { planetRotationHandler, showCurrentModal, hideCurrentModal, shrinkCurrentModal } from './scripts/Modals'
 
 var planetCenterX, planetCenterY = null,
     planetSizeContainer = document.getElementById("planet_size_container");
@@ -13,9 +13,7 @@ var scrollY,
 function scrollHandler() {
     // Grab scroll position
     scrollY = window.pageYOffset;
-    console.log(animTotal)
     if (scrollY < animScrollStop) {
-        console.log(animScrollStop)
         introTimeline.seek(scrollY / animScrollStop * animTotal)
         if (animationFinished == true) {
             animationFinished = false;
@@ -54,18 +52,20 @@ var pointerDownPostionX = null, pointerDownPostionY = null;
 var currentPlanetAngle = 0;
 var currPointerAngle = 0;
 var lastPointerAngle = 0;
-var leftPlanetStopAngle = 0, rightPlanetStopAngle = 180;
+var leftPlanetStopAngle = 0, rightPlanetStopAngle = 170;
 function calcPlanetPointerAngle() {
     return Math.atan2(
         pointerPostionY - planetCenterY,
         pointerPostionX - planetCenterX
     ) / (2 * Math.PI) * 360; // degrees conversion
 }
-function rotatePlanet(pointerDown) {
-    currPointerAngle = calcPlanetPointerAngle()
+var swipeHintDone = false;
+function rotatePlanet(pointerDown, currPointerAngle) {
+
     var adjstedPlanetAngle = currentPlanetAngle -= currPointerAngle - lastPointerAngle;
     lastPointerAngle = currPointerAngle;
-
+    // console.log(currentPlanetAngle)
+    if (!swipeHintDone & adjstedPlanetAngle > 5) { swipeHintDone = true; document.getElementById("swipe_hint").remove() }
     // !! assuming minPlanetAngle is near 360 deg not zero
     if (currentPlanetAngle < leftPlanetStopAngle) {
         if (pointerDown) adjstedPlanetAngle = leftPlanetStopAngle - Math.log10(Math.abs(currentPlanetAngle - leftPlanetStopAngle))
@@ -85,10 +85,10 @@ function mouseMoveHandler(e) {
     var isMouseButtonDown = e.buttons === undefined ? e.which >= 1 : e.buttons >= 1;
     if (!isMouseButtonDown) {
         document.body.removeEventListener("mousemove", mouseMoveHandler)
-        rotatePlanet(false)
+        rotatePlanet(false, calcPlanetPointerAngle())
         return false;
     } else {
-        rotatePlanet(true)
+        rotatePlanet(true, calcPlanetPointerAngle())
     }
 }
 
@@ -111,10 +111,10 @@ function touchMoveHandler(event) {
     pointerPostionX = event.touches[0].clientX
     pointerPostionY = event.touches[0].clientY
     if (gestureType === null) {
-        if (Math.abs(pointerPostionX - pointerDownPostionX) * 1.8 < Math.abs(pointerPostionY - pointerDownPostionY)) {
+        if (Math.abs(pointerPostionX - pointerDownPostionX) * 3 < pointerPostionY - pointerDownPostionY) {
+            // shrinkCurrentModal()
             event.preventDefault();
             event.stopPropagation();
-            console.log(event.cancelable)
             document.body.removeEventListener("touchmove", touchMoveHandler)
             gestureType = 'scroll';
             return false;
@@ -124,24 +124,24 @@ function touchMoveHandler(event) {
         }
     }
 
-    rotatePlanet(true)
+    rotatePlanet(true, calcPlanetPointerAngle())
 };
 
 function touchEndHandler(event) {
     if (gestureType === 'scroll') document.body.addEventListener("touchmove", touchMoveHandler, { passive: false })
     gestureType = null;
-    rotatePlanet(false)
-    console.log('pointerup');
+    rotatePlanet(false, calcPlanetPointerAngle())
     document.body.style.overflowY = 'auto'
 };
 
 var scrollEndTimeout;
 function scrollWheelHandler(e) {
     if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
-        currentPlanetAngle += e.deltaX * 0.01
-        rotatePlanet(true)
+        currPointerAngle = -e.deltaX * 0.01;
+        lastPointerAngle = 0;
+        rotatePlanet(true, currPointerAngle)
         clearTimeout(scrollEndTimeout)
-        scrollEndTimeout = setTimeout(function () { rotatePlanet(false) }, 100)
+        scrollEndTimeout = setTimeout(function () { rotatePlanet(false, lastPointerAngle) }, 100)
     }
 }
 
