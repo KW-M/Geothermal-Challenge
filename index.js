@@ -1,5 +1,6 @@
 // Green Sock Animation
 import gsap from "gsap";
+import { } from "./scripts/ScrollSnap"
 import { introTimeline } from './scripts/ScrollAnim'
 import { planetRotationHandler, showCurrentModal, hideCurrentModal, shrinkCurrentModal } from './scripts/Modals'
 
@@ -19,22 +20,22 @@ function scrollHandler() {
             animationFinished = false;
             hideCurrentModal()
             planetSizeContainer.removeEventListener("touchmove", touchMoveHandler, { passive: false })
-            document.body.onmousedown = null
-            document.body.ontouchstart = null
-            document.body.ontouchend = null;
-            document.body.ontouchcancel = null;
-            document.body.onwheel = null;
+            planetSizeContainer.onmousedown = null
+            planetSizeContainer.ontouchstart = null
+            planetSizeContainer.ontouchend = null;
+            planetSizeContainer.ontouchcancel = null;
+            planetSizeContainer.onwheel = null;
         }
     } else if (animationFinished == false) {
         introTimeline.seek(animTotal); // jump to the end of the animation
         animationFinished = true;
         showCurrentModal()
         planetSizeContainer.addEventListener("touchmove", touchMoveHandler, { passive: false })
-        document.body.onmousedown = mouseDownHandler
-        document.body.ontouchstart = touchStartHandler
-        document.body.ontouchend = touchEndHandler;
-        document.body.ontouchcancel = touchEndHandler;
-        document.body.onwheel = scrollWheelHandler;
+        planetSizeContainer.onmousedown = mouseDownHandler
+        planetSizeContainer.ontouchstart = touchStartHandler
+        planetSizeContainer.ontouchend = touchEndHandler;
+        planetSizeContainer.ontouchcancel = touchEndHandler;
+        planetSizeContainer.onwheel = scrollWheelHandler;
     }
 } scrollHandler();
 window.onscroll = scrollHandler;
@@ -69,7 +70,7 @@ function rotatePlanetByPointer() {
 function rotatePlanet(pointerDown, deltaAngle) {
 
     var adjstedPlanetAngle = currentPlanetAngle -= deltaAngle;
-    // console.log(currentPlanetAngle)
+    console.log(currentPlanetAngle)
     if (!swipeHintDone & adjstedPlanetAngle > 5) { swipeHintDone = true; document.getElementById("swipe_hint").remove() }
     // !! assuming minPlanetAngle is near 360 deg not zero
     if (currentPlanetAngle < leftPlanetStopAngle) {
@@ -117,10 +118,10 @@ function touchMoveHandler(event) {
     pointerPostionY = event.touches[0].clientY
     if (gestureType === null) {
         if (Math.abs(pointerPostionX - pointerDownPostionX) * 3 < pointerPostionY - pointerDownPostionY) {
-            // shrinkCurrentModal()
+            shrinkCurrentModal()
             event.preventDefault();
             event.stopPropagation();
-            document.body.removeEventListener("touchmove", touchMoveHandler)
+            planetSizeContainer.removeEventListener("touchmove", touchMoveHandler)
             gestureType = 'scroll';
             return false;
         } else {
@@ -135,7 +136,7 @@ function touchMoveHandler(event) {
 function touchEndHandler(event) {
     if (gestureType === 'scroll') planetSizeContainer.addEventListener("touchmove", touchMoveHandler, { passive: false })
     gestureType = null;
-    rotatePlanet(false, calcPlanetPointerAngle())
+    rotatePlanet(false, 0)
     document.body.style.overflowY = 'auto'
 };
 

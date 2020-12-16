@@ -14,7 +14,6 @@ function expandModal(modalElem) {
 }
 
 function shrinkModal(modalElem) {
-    console.log(modalElem, planetArcSections[openModalSectionIndex])
     if (!swipeHintShown && openModelId != null) { swipeHintShown = true; var sw = document.getElementById('swipe_hint'); if (sw) sw.style.display = 'block'; }
     document.body.style.overflowY = "scroll"
     modalElem.classList.remove('expanded-modal')
@@ -69,18 +68,18 @@ function shrinkCurrentModal() {
 var openModalSectionIndex = 0
 // format  [section end degree. 'modal key']
 var planetArcSections = [
-    [15, 'existing_geo_modal'],
-    [47, 'egs_modal'],
+    [23, 'existing_geo_modal'],
+    [43, 'egs_modal'],
     [58, 'zero_co2_polution'],
-    [71, 'rain_or_shine'],
-    [85, 'AGS'],
-    [99, 'land_use'],
+    [72, 'rain_or_shine'],
+    [87, 'AGS'],
+    [100, 'land_use'],
     [112, 'water'],
-    [126, 'gshp_modal'],
+    [127, 'gshp_modal'],
     [135, 'alternate_uses'],
-    [145, 'deep_egs'],
-    [154, 'jobs'],
-    [160, 'costs'],
+    [146.5, 'deep_egs'],
+    [155, 'jobs'],
+    [165, 'costs'],
     [180, 'barrier_to_progress'],
 ],
     maxAngle = planetArcSections[planetArcSections.length - 1][0]

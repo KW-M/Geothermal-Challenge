@@ -4,6 +4,7 @@ html {
   padding: 0;
 
   overscroll-behavior-x: none;
+  // scroll-snap-type: y mandatory;
 }
 
 body {
@@ -37,6 +38,34 @@ body.sky-bg {
 
   width: 100%;
   height: 7500px;
+}
+
+.scroll_snap_section {
+  position: relative;
+
+  width: 1px;
+
+  pointer-events: none;
+
+  scroll-snap-align: end;
+  span {
+    position: absolute;
+    z-index: 300;
+    top: 95vh;
+    bottom: 38px;
+
+    box-sizing: border-box;
+    width: 40px;
+    height: 40px;
+    margin-left: -12px;
+
+    transform: rotate(-45deg);
+    animation: sdb07 2s infinite;
+
+    opacity: 0;
+    border-bottom: 2px solid #fff;
+    border-left: 2px solid #fff;
+  }
 }
 
 .star-background {
