@@ -68,7 +68,6 @@ function rotatePlanetByPointer() {
     lastPointerAngle = currPointerAngle;
 }
 function rotatePlanet(pointerDown, deltaAngle) {
-
     var adjstedPlanetAngle = currentPlanetAngle -= deltaAngle;
     console.log(currentPlanetAngle)
     if (!swipeHintDone & adjstedPlanetAngle > 5) { swipeHintDone = true; document.getElementById("swipe_hint").remove() }

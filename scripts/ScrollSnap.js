@@ -3,8 +3,8 @@ function easeInOutQuad(t) {
     return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t
 }
 
-var timeout = 100,
-    animDuration = 600,
+var timeout = 1000,
+    animDuration = 900,
     threshold = 0.2,
     listenerElement = window,
     animating = false,
@@ -35,11 +35,9 @@ function checkScrollSpeed(value) {
 }
 
 function startAnimation() {
+    if (document.documentElement.scrollTop < 5000) return;
     speedDeltaY = checkScrollSpeed(document.documentElement.scrollTop)
-    if (animating || speedDeltaY === 0) {
-        return
-    }
-
+    if (animating) return;
     handler()
 }
 listenerElement.addEventListener('scroll', startAnimation, false);
@@ -72,6 +70,8 @@ function animationHandler() {
         return
     }
 
+    if (document.documentElement.scrollTop < 5000) return;
+
     // detect direction of scroll. negative is up, positive is down.
     var direction = speedDeltaY > 0 ? 1 : -1;
 
@@ -96,40 +96,40 @@ function animationHandler() {
     }
 }
 
-var snapSectionIndex = 0
+var snapSectionIndex = 5
 // format  [section end distance, other stuff...]
 var snapSections = [
-    [0, 'existing_geo_modal'],
-    [400, 'existing_geo_modal'],
-    [1500, 'existing_geo_modal'],
-    [4118, 'existing_geo_modal'],
-    [5200, 'existing_geo_modal'],
+    [0],
+    [560],
+    [1500],
+    [3600],
+    [4750],
     [7500]
 ];
-
-function changeSnapSection(number) {
-    snapSectionIndex += number;
-
-}
 
 function getNextSnapPoint(direction) {
 
     // get snap length
     var top = document.documentElement.scrollTop;
 
+    while (top > snapSections[snapSectionIndex][0] && snapSectionIndex < snapSections.length - 1) { snapSectionIndex += 1; snapFlag = true; }
+
     // calc current and initial snappoint
     var distFromSnap = Math.abs(top - snapSections[snapSectionIndex][0]);
-    console.log(distFromSnap, snapSectionIndex)
 
-    if (distFromSnap > 50) {
-        snapSectionIndex += direction;
+
+    if ((distFromSnap > 1200 && snapSectionIndex === 5) || (snapSectionIndex < 5 && distFromSnap > 40)) {
+        var snapFlag = false;
         if (direction === 1) {
-            while (top > snapSections[snapSectionIndex][0] && snapSectionIndex < snapSections.length - 1) snapSectionIndex += 1;
+            while (top > snapSections[snapSectionIndex][0] && snapSectionIndex < snapSections.length - 1) { snapSectionIndex += 1; snapFlag = true; }
         } else {
-            while (top < snapSections[snapSectionIndex][0] && snapSectionIndex > 0) snapSectionIndex -= 1;
+            while (top < snapSections[snapSectionIndex][0] && snapSectionIndex > 1) { snapSectionIndex -= 1; snapFlag = true; }
         }
-        if (snapSectionIndex < 0) snapSectionIndex = 0;
-        else if (snapSectionIndex >= snapSections.length) snapSectionIndex = snapSections.length - 1;
+        if (snapFlag === false) {
+            snapSectionIndex += direction;
+            if (snapSectionIndex < 0) snapSectionIndex = 0;
+            else if (snapSectionIndex >= snapSections.length) snapSectionIndex = snapSections.length - 1;
+        }
     }
 
     // /**
@@ -146,9 +146,9 @@ function getNextSnapPoint(direction) {
     // var scrollTo = nextPoint * snapLength
 
     // stay in bounds (minimum: 0, maxmimum: absolute height)
+
     scrollTo = stayInBounds(0, 9000, snapSections[snapSectionIndex][0])
-    console.log(
-        "scrollto", scrollTo)
+    console.log("scrollto", scrollTo)
 
     return scrollTo;
 }

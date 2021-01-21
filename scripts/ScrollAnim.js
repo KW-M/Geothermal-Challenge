@@ -2,8 +2,9 @@
 import gsap from "gsap";
 
 var introTimeline = gsap.timeline()
+introTimeline.set("#swipe_hint", { display: "none" })
 introTimeline.to("#earth_planet", { y: 0, duration: 2, ease: "power1" })
-introTimeline.to("#scale_bar", { opacity: 1 }, "-=1.6");
+introTimeline.to("#scale_bar", { opacity: 1 }, "-=1.7");
 introTimeline.set("#intro_text_2", { display: "block" }, "-=1.1")
 introTimeline.to("#intro_text_2", { opacity: 1, duration: 0.5, ease: "none" }, "-=1.1")
 //Local Hotspots Image fade in
@@ -28,16 +29,18 @@ introTimeline.set("#earth_scale_cutaway_l", { display: "inline", scaleX: 0, tran
 introTimeline.to("#earth_scale_cutaway_l", { scaleX: 1, duration: 0.5, ease: "power1.out" }, "-=1")
 introTimeline.to("#earth_scale_cutaway_l,#earth_powerstations_l,#earth_powerstations_r", { display: "none", duration: 0, ease: "none" })
 // fade out earth 1 & zoom
-introTimeline.to("#miniplanet", { display: "block", duration: 0, ease: "none" }, "-=0.8") /// -------
+introTimeline.set("#miniplanet", { display: "block" }, "-=0.8") /// -------
 introTimeline.to("#earth_planet", { opacity: 0, display: 'none', duration: 0.5, ease: "none" }, "-=0.8")
 introTimeline.to("#miniplanet", { scale: 1, duration: 1.5, ease: "power1.inOut" }, "-=0.5")
 
 
-introTimeline.set("#planet_surface_container", { display: "block" })
-introTimeline.set("body", { className: "sky-bg" })
-introTimeline.to(".star-background", { opacity: 0, duration: 0.5, ease: "none" }, "-=0.8")
+introTimeline.set("#planet_surface_container", { display: "block" }, "-=0.5")
+introTimeline.to("#planet_surface_container", { opacity: 1, duration: 0.8, }, "-=0.5")
+// introTimeline.set("body", { className: "sky-bg" })
+
+// introTimeline.to(".star-background", { opacity: 0, duration: 0.5, ease: "none" }, "-=0.8")
 introTimeline.set(".star-background", { display: "none" }, "-=0")
-introTimeline.set("#planet_surface_container", { className: "visible" })
+// introTimeline.to("#planet_surface_container", { className: "visible" })
 introTimeline.set("#loading_hint_2", { display: "block" })
 introTimeline.set("#swipe_hint", { display: "none" })
 introTimeline.pause()
