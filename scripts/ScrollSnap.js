@@ -15,7 +15,7 @@ var timeout = 1000,
     lastScrollValue = 0,
     animationFrame;
 
-function checkScrollSpeed(value) {
+export function checkScrollSpeed(value) {
     var newValue = value
     let delta
 
@@ -224,4 +224,3 @@ function smoothScroll(end, callback) {
     animationFrame = requestAnimationFrame(step)
 }
 
-export { };

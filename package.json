@@ -3,16 +3,15 @@
   "version": "2.0.0",
   "description": "Web Infographic for the 2020 Geothermal Design Challenge",
   "repository": "",
-  "main": "index.js",
   "scripts": {
     "watch": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html;cp ./og-image.jpg ./dist/og-image.jpg"
   },
   "author": "Kyle Worcester-Moore, Krishna Kumar Pandian, & Ryan Anderson",
   "license": "MIT",
   "browserslist": "> 0.25%, not dead",
   "devDependencies": {
-    "parcel": "^1.12.4",
+    "parcel": "^2.0.0-nightly.548",
     "sass": "^1.26.11"
   },
   "dependencies": {

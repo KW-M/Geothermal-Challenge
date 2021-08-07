@@ -20,13 +20,15 @@
         history.scrollRestoration = "manual"
     </script>
     <!--  Facebook Open Graph tags: https://ogp.me/, https://unfurler.com/  -->
-    <meta property="og:url" content="https://geothermal-future.web.app" />
-    <meta property="og:title" content="Geothermal Future" />
-    <meta property="og:image" content="https://geothermal-future.web.app/social-banner-image.png" />
+    <meta property="og:image:height" content="241">
+    <meta property="og:image:width" content="460">
+    <meta property="og:title" content="The Future of Geothermal">
+    <meta property="og:url" content="https://geothermal-future.web.app">
+    <meta property="og:image" content="https://geothermal-future.web.app/og-image.jpg">
     <!-- twitter card tags additive with the og: tags  -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" value="Geothermal Future" />
-    <meta name="twitter:image" content="https://geothermal-future.web.app/social-banner-image.png" />
+    <meta name="twitter:title" value="The Future of Geothermal" />
+    <meta name="twitter:image" content="https://geothermal-future.web.app/og-image.jpg" />
     <meta name="twitter:url" content="https://geothermal-future.web.app" />
 </head>
 
@@ -113,20 +115,20 @@
             clip-rule="evenodd" viewBox="0 -3 1000 1000">
             <defs />
 
-            <image xlink:href="/Geo Earth Overlay Heat.png" id="earth_potential" preserveAspectRatio="xMidYMin slice"
+            <image xlink:href="./Geo Earth Overlay Heat.png" id="earth_potential" preserveAspectRatio="xMidYMin slice"
                 width="1000" y="-20" height="600"
                 onload="document.getElementById('loading_hint_1').remove();document.body.style.overflowY = 'scroll'; document.getElementById('scroll_hint').style.display='block'" />
 
-            <use href="#earth_scale_cutaway" id="earth_scale_cutaway_r" />
+            <use xlink:href="#earth_scale_cutaway" id="earth_scale_cutaway_r" />
 
-            <image xlink:href="/Geo Earth overlay hotspots.png" id="earth_powerstations_l"
+            <image xlink:href="./Geo Earth overlay hotspots.png" id="earth_powerstations_l"
                 clip-path="url(#half_circle_l)" preserveAspectRatio="xMidYMin slice" width="1000" y="-20" height="600">
             </image>
-            <image xlink:href="/Geo Earth overlay hotspots.png" id="earth_powerstations_r"
+            <image xlink:href="./Geo Earth overlay hotspots.png" id="earth_powerstations_r"
                 clip-path="url(#half_circle_r)" preserveAspectRatio="xMidYMin slice" width="1000" y="-20" height="600">
             </image>
 
-            <use href="#earth_scale_cutaway" id="earth_scale_cutaway_l" clip-path="url(#half_circle_l)" />
+            <use xlink:href="#earth_scale_cutaway" id="earth_scale_cutaway_l" clip-path="url(#half_circle_l)" />
 
             <defs>
                 <g id="earth_scale_cutaway">
